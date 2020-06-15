@@ -13,6 +13,7 @@
 		4E1A39E524977EA30087828E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1A39E424977EA30087828E /* Assets.xcassets */; };
 		4E1A39E824977EA30087828E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E1A39E724977EA30087828E /* Preview Assets.xcassets */; };
 		4E1A39EB24977EA30087828E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E1A39E924977EA30087828E /* LaunchScreen.storyboard */; };
+		4EDC02BB24978302005BC5E4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4EDC02BA24978302005BC5E4 /* Default-568h@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4E1A39E724977EA30087828E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E1A39EA24977EA30087828E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E1A39EC24977EA30087828E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EDC02BA24978302005BC5E4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		4E1A39D224977E9F0087828E = {
 			isa = PBXGroup;
 			children = (
+				4EDC02BA24978302005BC5E4 /* Default-568h@2x.png */,
 				4E1A39DD24977E9F0087828E /* Project1 (Form, NavigationView, @State) */,
 				4E1A39DC24977E9F0087828E /* Products */,
 			);
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E1A39EB24977EA30087828E /* LaunchScreen.storyboard in Resources */,
+				4EDC02BB24978302005BC5E4 /* Default-568h@2x.png in Resources */,
 				4E1A39E824977EA30087828E /* Preview Assets.xcassets in Resources */,
 				4E1A39E524977EA30087828E /* Assets.xcassets in Resources */,
 			);
@@ -285,10 +289,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"16Day (Form, NavigationView, @State)/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Project1 (Form, NavigationView, @State)/Preview Content\"";
 				DEVELOPMENT_TEAM = 2UCWL5WS3X;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "16Day (Form, NavigationView, @State)/Info.plist";
+				INFOPLIST_FILE = "Project1 (Form, NavigationView, @State)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,10 +309,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_ASSET_PATHS = "\"16Day (Form, NavigationView, @State)/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Project1 (Form, NavigationView, @State)/Preview Content\"";
 				DEVELOPMENT_TEAM = 2UCWL5WS3X;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "16Day (Form, NavigationView, @State)/Info.plist";
+				INFOPLIST_FILE = "Project1 (Form, NavigationView, @State)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
