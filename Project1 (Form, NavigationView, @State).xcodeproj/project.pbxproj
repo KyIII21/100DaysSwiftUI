@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E1A39DB24977E9F0087828E /* 16Day (Form, NavigationView, @State).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "16Day (Form, NavigationView, @State).app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E1A39DB24977E9F0087828E /* Project1 (Form, NavigationView, @State).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project1 (Form, NavigationView, @State).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E1A39DE24977E9F0087828E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E1A39E024977E9F0087828E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E1A39E224977E9F0087828E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		4E1A39D224977E9F0087828E = {
 			isa = PBXGroup;
 			children = (
-				4E1A39DD24977E9F0087828E /* 16Day (Form, NavigationView, @State) */,
+				4E1A39DD24977E9F0087828E /* Project1 (Form, NavigationView, @State) */,
 				4E1A39DC24977E9F0087828E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		4E1A39DC24977E9F0087828E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E1A39DB24977E9F0087828E /* 16Day (Form, NavigationView, @State).app */,
+				4E1A39DB24977E9F0087828E /* Project1 (Form, NavigationView, @State).app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4E1A39DD24977E9F0087828E /* 16Day (Form, NavigationView, @State) */ = {
+		4E1A39DD24977E9F0087828E /* Project1 (Form, NavigationView, @State) */ = {
 			isa = PBXGroup;
 			children = (
 				4E1A39DE24977E9F0087828E /* AppDelegate.swift */,
@@ -64,7 +64,7 @@
 				4E1A39EC24977EA30087828E /* Info.plist */,
 				4E1A39E624977EA30087828E /* Preview Content */,
 			);
-			path = "16Day (Form, NavigationView, @State)";
+			path = "Project1 (Form, NavigationView, @State)";
 			sourceTree = "<group>";
 		};
 		4E1A39E624977EA30087828E /* Preview Content */ = {
@@ -78,9 +78,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4E1A39DA24977E9F0087828E /* 16Day (Form, NavigationView, @State) */ = {
+		4E1A39DA24977E9F0087828E /* Project1 (Form, NavigationView, @State) */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E1A39EF24977EA30087828E /* Build configuration list for PBXNativeTarget "16Day (Form, NavigationView, @State)" */;
+			buildConfigurationList = 4E1A39EF24977EA30087828E /* Build configuration list for PBXNativeTarget "Project1 (Form, NavigationView, @State)" */;
 			buildPhases = (
 				4E1A39D724977E9F0087828E /* Sources */,
 				4E1A39D824977E9F0087828E /* Frameworks */,
@@ -90,9 +90,9 @@
 			);
 			dependencies = (
 			);
-			name = "16Day (Form, NavigationView, @State)";
+			name = "Project1 (Form, NavigationView, @State)";
 			productName = "16Day (Form, NavigationView, @State)";
-			productReference = 4E1A39DB24977E9F0087828E /* 16Day (Form, NavigationView, @State).app */;
+			productReference = 4E1A39DB24977E9F0087828E /* Project1 (Form, NavigationView, @State).app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -110,7 +110,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4E1A39D624977E9F0087828E /* Build configuration list for PBXProject "16Day (Form, NavigationView, @State)" */;
+			buildConfigurationList = 4E1A39D624977E9F0087828E /* Build configuration list for PBXProject "Project1 (Form, NavigationView, @State)" */;
 			compatibilityVersion = "Xcode 9.3";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -123,7 +123,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E1A39DA24977E9F0087828E /* 16Day (Form, NavigationView, @State) */,
+				4E1A39DA24977E9F0087828E /* Project1 (Form, NavigationView, @State) */,
 			);
 		};
 /* End PBXProject section */
@@ -294,7 +294,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Home.-6Day--Form--NavigationView---State-";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Project1 (Form, NavigationView, @State)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -314,7 +314,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Home.-6Day--Form--NavigationView---State-";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Project1 (Form, NavigationView, @State)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -323,7 +323,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E1A39D624977E9F0087828E /* Build configuration list for PBXProject "16Day (Form, NavigationView, @State)" */ = {
+		4E1A39D624977E9F0087828E /* Build configuration list for PBXProject "Project1 (Form, NavigationView, @State)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E1A39ED24977EA30087828E /* Debug */,
@@ -332,7 +332,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E1A39EF24977EA30087828E /* Build configuration list for PBXNativeTarget "16Day (Form, NavigationView, @State)" */ = {
+		4E1A39EF24977EA30087828E /* Build configuration list for PBXNativeTarget "Project1 (Form, NavigationView, @State)" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E1A39F024977EA30087828E /* Debug */,
