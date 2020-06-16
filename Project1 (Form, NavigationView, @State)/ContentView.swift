@@ -9,20 +9,24 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var numberOfPeople = 0
+    @State private var numberOfPeople = ""
     @State private var checkAmount = ""
     @State private var tipPercentage = 2
     let tipPercentages = ["5", "10","15","20","0"]
     
-    var totalPerPerson: Double{
-        let realNofP = Double(numberOfPeople + 2)
+    var totalAmount: Double{
         let realPr = Double(tipPercentages[tipPercentage])!
         let realAmount = Double(checkAmount.replacingOccurrences(of: ",", with: ".", options: .literal, range: nil)) ?? 0
-        
+
         let tipValue = realAmount / 100 * realPr
-        let grandTotal = realAmount + tipValue
+        return realAmount + tipValue
         
-        return grandTotal / realNofP
+    }
+    
+    var totalPerPerson: Double{
+        let realNofP = Double(numberOfPeople) ?? 1
+       
+        return totalAmount / realNofP
     }
     
     
@@ -43,14 +47,14 @@ struct ContentView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
-                Section {
-                    Picker("Number of people", selection: $numberOfPeople) {
-                        ForEach(2 ..< 100) {
-                            Text("\($0) people")
-                        }
-                    }
+                Section(header: Text("Amount with tip")){
+                    Text("$\(totalAmount, specifier: "%.2f")")
                 }
-                Section(header: Text("From each Person")){
+                Section {
+                    TextField("Number of people", text: $numberOfPeople)
+                    .keyboardType(.numberPad)
+                }
+                Section(header: Text("Amount per person")){
                     Text("$\(totalPerPerson, specifier: "%.2f")")
                 }
             }.navigationBarTitle("WeSplit")
