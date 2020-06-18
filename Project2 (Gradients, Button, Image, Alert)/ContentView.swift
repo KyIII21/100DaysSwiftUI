@@ -49,7 +49,7 @@ struct ContentView: View {
                             .overlay(Capsule().stroke(Color.black, lineWidth: 2))
                             .shadow(color: .black, radius: 2)
                     }
-                    .alert(isPresented: self.$showingScore){        Alert(title: Text(self.scoreTitle), message: Text("Your Correct score is \(self.scoreCorrect)\nYour Wrong score is \(self.scoreWrong)\nThis is the flag of \(self.countries[self.tapNumber])"), dismissButton: .default(Text("Ok")){
+                    .alert(isPresented: self.$showingScore){        Alert(title: Text(self.scoreTitle), message: self.textForAlert(), dismissButton: .default(Text("Ok")){
                             self.askQuestion()
                         })
                     }
@@ -60,6 +60,13 @@ struct ContentView: View {
         }
         
         
+    }
+    func textForAlert() -> Text{
+        if self.scoreTitle == "Wrong"{
+            return Text("Your Correct score is \(self.scoreCorrect)\nYour Wrong score is \(self.scoreWrong)\nThis is the flag of \(self.countries[self.tapNumber])")
+        }else{
+            return Text("Your Correct score is \(self.scoreCorrect)\nYour Wrong score is \(self.scoreWrong)")
+        }
     }
     func flagTapped(_ number: Int) {
         tapNumber = number
