@@ -8,6 +8,7 @@
 
 import SwiftUI
 
+
 struct ContentView: View {
     @State private var numberOfPeople = ""
     @State private var checkAmount = ""
@@ -49,6 +50,7 @@ struct ContentView: View {
                 }
                 Section(header: Text("Amount with tip")){
                     Text("$\(totalAmount, specifier: "%.2f")")
+                        .foregroundColor(self.tipPercentage == self.tipPercentages.count - 1 ? .red : .black)
                 }
                 Section {
                     TextField("Number of people", text: $numberOfPeople)
