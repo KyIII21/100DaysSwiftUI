@@ -9,9 +9,6 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var alertTitle = ""
-    @State private var alertMessage = ""
-    @State private var showingAlert = false
     
     static var defaultWakeTime: Date {
         var components = DateComponents()
@@ -22,7 +19,7 @@ struct ContentView: View {
     @State private var wakeUp = defaultWakeTime
     @State private var sleepAmount = 8.0
     @State private var coffeeAmount = 1
-    func calculateBedtime() {
+    func youNeedSleep() -> String {
         let model = SleepCalculator()
         
         let components = Calendar.current.dateComponents([.hour, .minute], from: wakeUp)
@@ -37,28 +34,19 @@ struct ContentView: View {
             let formatter = DateFormatter()
             formatter.timeStyle = .short
 
-            alertMessage = formatter.string(from: sleepTime)
-            alertTitle = "Your ideal bedtime is…"
+            return formatter.string(from: sleepTime)
         } catch {
-            alertTitle = "Error"
-            alertMessage = "Sorry, there was a problem calculating your bedtime."
+            return "Sorry, there was a problem calculating your bedtime."
         }
-        showingAlert = true
     }
     
     var body: some View {
         NavigationView {
             Form {
                 Section(header: Text("When do you want to wake up?")){
-                    //Text("When do you want to wake up?")
-                        //.font(.headline)
-
                     DatePicker("Please enter a time", selection: $wakeUp, displayedComponents: .hourAndMinute)
                         //.labelsHidden()
                 }
-
-                //Text("Desired amount of sleep")
-                   // .font(.headline)
 
                 Section(header: Text("Desired amount of sleep")){
                     Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
@@ -66,26 +54,27 @@ struct ContentView: View {
                     }
                 }
                 
-                Section(header: Text("Desired amount of sleep")){
-                   Stepper(value: $coffeeAmount, in: 1...20) {
-                       if coffeeAmount == 1 {
-                           Text("1 cup")
-                       } else {
-                           Text("\(coffeeAmount) cups")
-                       }
-                   }
+                Section(header: Text("Daily coffee intake")){
+                    Picker("Choice count", selection: $coffeeAmount){
+                        ForEach(1..<21){numb in
+                            if numb == 1 {
+                                Text("1 cup")
+                            } else {
+                                Text("\(numb) cups" + "")
+                            }
+                        }
+                    }
+                }
+                
+                Section(header: Text("Go to bed at")
+                    .font(.headline)
+                    ){
+                    Text(youNeedSleep())
+                    .bold()
                 }
                 
             }
             .navigationBarTitle("BetterRest")
-            .navigationBarItems(trailing:
-                    Button(action: calculateBedtime) {
-                        Text("Calculate")
-                }
-                .alert(isPresented: $showingAlert) {
-                    Alert(title: Text(alertTitle), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                }
-            )
         }
     }
 }
