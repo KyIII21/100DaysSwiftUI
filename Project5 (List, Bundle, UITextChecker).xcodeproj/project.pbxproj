@@ -13,6 +13,7 @@
 		4EBC7715249F593100095DAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBC7714249F593100095DAE /* Assets.xcassets */; };
 		4EBC7718249F593100095DAE /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBC7717249F593100095DAE /* Preview Assets.xcassets */; };
 		4EBC771B249F593100095DAE /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBC7719249F593100095DAE /* LaunchScreen.storyboard */; };
+		4EBC7723249F76F000095DAE /* start.txt in Resources */ = {isa = PBXBuildFile; fileRef = 4EBC7722249F76F000095DAE /* start.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		4EBC7717249F593100095DAE /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4EBC771A249F593100095DAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EBC771C249F593100095DAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EBC7722249F76F000095DAE /* start.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = start.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -40,6 +42,7 @@
 		4EBC7702249F592C00095DAE = {
 			isa = PBXGroup;
 			children = (
+				4EBC7722249F76F000095DAE /* start.txt */,
 				4EBC770D249F592C00095DAE /* Project5 (List, Bundle, UITextChecker) */,
 				4EBC770C249F592C00095DAE /* Products */,
 			);
@@ -134,6 +137,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4EBC771B249F593100095DAE /* LaunchScreen.storyboard in Resources */,
+				4EBC7723249F76F000095DAE /* start.txt in Resources */,
 				4EBC7718249F593100095DAE /* Preview Assets.xcassets in Resources */,
 				4EBC7715249F593100095DAE /* Assets.xcassets in Resources */,
 			);
