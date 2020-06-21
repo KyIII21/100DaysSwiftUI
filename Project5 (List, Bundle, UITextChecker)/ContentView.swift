@@ -12,6 +12,7 @@ struct ContentView: View {
     @State private var usedWords = [String]()
     @State private var rootWord = ""
     @State private var newWord = ""
+    @State private var score = 0
     
     @State private var errorTitle = ""
     @State private var errorMessage = ""
@@ -35,12 +36,18 @@ struct ContentView: View {
             wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
             return
         }
-
+        
+        guard isSimpleorShort(word: answer) else {
+            wordError(title: "Word not possible", message: "That is shorter than 3 words or very simple")
+            return
+        }
+        
         guard isReal(word: answer) else {
             wordError(title: "Word not possible", message: "That isn't a real word.")
             return
         }
 
+        score += answer.count
         usedWords.insert(answer, at: 0)
         newWord = ""
     }
@@ -55,6 +62,9 @@ struct ContentView: View {
 
                 // 4. Pick one random word, or use "silkworm" as a sensible default
                 rootWord = allWords.randomElement() ?? "silkworm"
+                
+                usedWords = []
+                score = 0
 
                 // If we are here everything has worked, so we can exit
                 return
@@ -91,6 +101,14 @@ struct ContentView: View {
         return misspelledRange.location == NSNotFound
     }
     
+    func isSimpleorShort(word: String) -> Bool {
+        if word.count < 4 || rootWord.hasPrefix(word){
+            return false
+        }else{
+            return true
+        }
+    }
+    
     func wordError(title: String, message: String) {
         errorTitle = title
         errorMessage = message
@@ -100,21 +118,38 @@ struct ContentView: View {
     var body: some View {
          NavigationView {
                VStack {
-                   TextField("Enter your word", text: $newWord, onCommit: addNewWord)
+                    TextField("Enter your word", text: $newWord, onCommit: addNewWord)
                         .textFieldStyle(RoundedBorderTextFieldStyle())
                         .padding()
                         .autocapitalization(.none)
 
-                   List(usedWords, id: \.self) {
+                    List(usedWords, id: \.self) {
                        Image(systemName: "\($0.count).circle")
                        Text($0)
-                   }
+                    }
+                
+                    HStack{
+                        Section(header: Text("Count Words:")){
+                            Text("\(usedWords.count)")
+                        }
+                        Text(" / ")
+                        Section(header: Text("Score:")){
+                            Text("\(score)")
+                        }
+                    }
+                    .font(.headline)
+                    .foregroundColor(.white)
+               .frame(width: 400, height: 60)
+                    .background(/*@START_MENU_TOKEN@*/Color.gray/*@END_MENU_TOKEN@*/)
                }
                .navigationBarTitle(rootWord)
                .onAppear(perform: startGame)
-                .alert(isPresented: $showingError) {
+               .alert(isPresented: $showingError) {
                     Alert(title: Text(errorTitle), message: Text(errorMessage), dismissButton: .default(Text("OK")))
             }
+               .navigationBarItems(leading: Button(action: startGame){
+                Text("Restart Game")
+               })
            }
     }
 }
