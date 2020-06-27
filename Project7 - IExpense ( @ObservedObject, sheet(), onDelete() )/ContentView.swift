@@ -17,6 +17,19 @@ struct ContentView: View {
         expenses.items.remove(atOffsets: offsets)
     }
     
+    func changeColor(amount: Int) -> Color{
+        switch amount {
+        case 0...10:
+            return Color.green
+        case 11...100:
+            return Color.black
+        case 101...:
+            return Color.red
+        default:
+            return Color.black
+        }
+    }
+    
     var body: some View {
         NavigationView {
             List {
@@ -31,7 +44,10 @@ struct ContentView: View {
 
                         Spacer()
                         Text("$\(item.amount)")
+                            
+                            .foregroundColor(self.changeColor(amount: item.amount))
                     }
+                    
                 }
                 .onDelete(perform: removeItems)
             }
@@ -39,7 +55,7 @@ struct ContentView: View {
                 AddView(expenses: self.expenses)
             }
             .navigationBarTitle("iExpense")
-            .navigationBarItems(trailing:
+            .navigationBarItems(leading: EditButton(), trailing:
                 Button(action: {
                     self.showingAddExpense = true
                 }) {

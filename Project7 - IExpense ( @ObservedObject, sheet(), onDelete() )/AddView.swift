@@ -14,6 +14,7 @@ struct AddView: View {
     @State private var amount = ""
     @ObservedObject var expenses: Expenses
     @Environment(\.presentationMode) var presentationMode
+    @State private var showingAlert = false
 
     static let types = ["Business", "Personal"]
 
@@ -32,11 +33,16 @@ struct AddView: View {
             .navigationBarTitle("Add new expense")
             .navigationBarItems(trailing: Button("Save") {
                 if let actualAmount = Int(self.amount) {
-                    let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount)
+                    let item = ExpenseItem(name: self.name, type: self.type, amount: actualAmount * actualAmount.signum())
                     self.expenses.items.append(item)
+                }else{
+                    self.showingAlert.toggle()
                 }
                 self.presentationMode.wrappedValue.dismiss()
             })
+                .alert(isPresented: self.$showingAlert){
+                    Alert(title: Text("Wrong"), message: Text("Amount should be a number"), dismissButton: .default(Text("Ok")){self.amount = ""})
+            }
         }
     }
 }
