@@ -23,26 +23,13 @@ struct CustomText: View {
 
 struct ContentView: View {
     var body: some View {
-        HStack{
-            ScrollView(.vertical) {
-                VStack(spacing: 10) {
-                    ForEach(0..<100) {
-                        //Создаются сразу
-                        CustomText("Item \($0)")
-                            .font(.title)
-                    }
+        NavigationView {
+            List(0..<100) { row in
+                NavigationLink(destination: Text("Detail \(row)")) {
+                    Text("Row \(row)")
                 }
             }
-            ScrollView(.vertical) {
-                VStack(spacing: 10) {
-                    ForEach(0..<100) {
-                        //Создаются по мере прокручивания
-                        Text("Item \($0)")
-                            .font(.title)
-                    }
-                }
-            }
-            .frame(maxWidth: .infinity)
+            .navigationBarTitle("SwiftUI")
         }
     }
 }
