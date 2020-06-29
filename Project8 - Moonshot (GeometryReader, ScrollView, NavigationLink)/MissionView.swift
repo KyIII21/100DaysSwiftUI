@@ -10,16 +10,18 @@ import SwiftUI
 
 struct MissionView: View {
     let mission: Mission
+    let astronauts: [CrewMember]
+    let missions: [Mission]
     
     struct CrewMember {
         let role: String
         let astronaut: Astronaut
     }
     
-    let astronauts: [CrewMember]
     
-    init(mission: Mission, astronauts: [Astronaut]) {
+    init(mission: Mission, astronauts: [Astronaut], missions: [Mission]) {
         self.mission = mission
+        self.missions = missions
 
         var matches = [CrewMember]()
 
@@ -43,6 +45,10 @@ struct MissionView: View {
                         .scaledToFit()
                         .frame(maxWidth: geometry.size.width * 0.6)
                         .padding(.top)
+                    
+                    Text("Date Mission: \(self.mission.formattedLaunchDate)")
+                        .padding(.top)
+                        .font(.footnote)
 
                     Text(self.mission.description)
                         .padding()
@@ -55,7 +61,7 @@ struct MissionView: View {
                     }
                     
                     ForEach(self.astronauts, id: \.role) { crewMember in
-                        NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut)) {
+                        NavigationLink(destination: AstronautView(astronaut: crewMember.astronaut, missions: self.missions)) {
                             HStack {
                                 Image(crewMember.astronaut.id)
                                     .resizable()
@@ -90,6 +96,6 @@ struct MissionView_Previews: PreviewProvider {
     static let astronauts: [Astronaut] = Bundle.main.decode("astronauts.json")
 
     static var previews: some View {
-        MissionView(mission: missions[0], astronauts: astronauts)
+        MissionView(mission: missions[0], astronauts: astronauts, missions: self.missions)
     }
 }
