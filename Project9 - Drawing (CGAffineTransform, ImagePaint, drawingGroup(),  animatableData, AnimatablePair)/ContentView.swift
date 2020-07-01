@@ -8,91 +8,87 @@
 
 import SwiftUI
 
-struct Spirograph: Shape {
-    let innerRadius: Int
-    let outerRadius: Int
-    let distance: Int
-    let amount: CGFloat
-    
-    func gcd(_ a: Int, _ b: Int) -> Int {
-        var a = a
-        var b = b
-
-        while b != 0 {
-            let temp = b
-            b = a % b
-            a = temp
-        }
-
-        return a
+struct Arrow: Shape {
+    var thinkLine: Int
+    var animatableData: Int {
+        get { thinkLine }
+        set { self.thinkLine = newValue }
     }
-    
     func path(in rect: CGRect) -> Path {
-        let divisor = gcd(innerRadius, outerRadius)
-        let outerRadius = CGFloat(self.outerRadius)
-        let innerRadius = CGFloat(self.innerRadius)
-        let distance = CGFloat(self.distance)
-        let difference = innerRadius - outerRadius
-        let endPoint = ceil(2 * CGFloat.pi * outerRadius / CGFloat(divisor)) * amount
-
         var path = Path()
-
-        for theta in stride(from: 0, through: endPoint, by: 0.01) {
-            var x = difference * cos(theta) + distance * cos(difference / outerRadius * theta)
-            var y = difference * sin(theta) - distance * sin(difference / outerRadius * theta)
-
-            x += rect.width / 2
-            y += rect.height / 2
-
-            if theta == 0 {
-                path.move(to: CGPoint(x: x, y: y))
-            } else {
-                path.addLine(to: CGPoint(x: x, y: y))
-            }
-        }
-
+        let arrLineCoordStart = rect.midX - CGFloat(self.thinkLine)/2
+        let arrLineY = rect.maxY / 3
+        //Drawing Triangle
+        path.move(to: CGPoint(x: rect.midX, y: 0))
+        path.addLine(to: CGPoint(x: rect.minX, y: arrLineY))
+        path.addLine(to: CGPoint(x: arrLineCoordStart, y: arrLineY))
+        path.addLine(to: CGPoint(x: arrLineCoordStart, y: rect.maxY))
+        path.addLine(to: CGPoint(x: arrLineCoordStart + CGFloat(thinkLine), y: rect.maxY))
+        path.addLine(to: CGPoint(x: arrLineCoordStart + CGFloat(thinkLine), y: arrLineY))
+        path.addLine(to: CGPoint(x: rect.maxX, y: arrLineY))
+        path.addLine(to: CGPoint(x: rect.midX, y: 0))
+        
         return path
     }
 }
 
+struct ColorCyclingRectangle: View {
+    var countLine: Int
+    var amount: Double
+    
+    func color(for value: Int, brightness: Double) -> Color {
+        var targetHue = Double(value) / Double(self.countLine) + amount
+
+        if targetHue > 1 {
+            targetHue -= 1
+        }
+
+        return Color(hue: targetHue, saturation: 1, brightness: brightness)
+    }
+    
+    var body: some View {
+        ZStack{
+            ForEach (0..<countLine) { number in
+                Rectangle()
+                    .inset(by: CGFloat(number))
+                    //.strokeBorder(self.color(for: number, brightness: 1), lineWidth: 2)
+                    .strokeBorder(LinearGradient(gradient: Gradient(colors: [
+                    self.color(for: number, brightness: 1),
+                    self.color(for: number, brightness: 0.7)
+                ]), startPoint: .top, endPoint: .bottom), lineWidth: 2)
+            }
+            
+        }
+        .drawingGroup()
+    }
+}
+
 struct ContentView: View {
-    @State private var innerRadius = 125.0
-    @State private var outerRadius = 75.0
-    @State private var distance = 25.0
-    @State private var amount: CGFloat = 1.0
-    @State private var hue = 0.6
+    @State private var thinkLine: CGFloat = 50
+    @State private var numberLine: CGFloat = 100
+    @State private var amount: CGFloat = 0.5
 
     var body: some View {
         VStack(spacing: 0) {
+            Arrow(thinkLine: Int(self.thinkLine))
+                .stroke(Color.black, style: StrokeStyle(lineWidth: 3, lineCap: .round, lineJoin: .round))
+                .frame(width: 150, height: 270)
+                .padding()
+            Slider(value: $thinkLine, in: 1...100)
+                .padding()
+            
             Spacer()
-
-            Spirograph(innerRadius: Int(innerRadius), outerRadius: Int(outerRadius), distance: Int(distance), amount: amount)
-                .stroke(Color(hue: hue, saturation: 1, brightness: 1), lineWidth: 1)
-                .frame(width: 300, height: 300)
-
-            Spacer()
-
-            Group {
-                Text("Inner radius: \(Int(innerRadius))")
-                Slider(value: $innerRadius, in: 10...150, step: 1)
-                    .padding([.horizontal, .bottom])
-
-                Text("Outer radius: \(Int(outerRadius))")
-                Slider(value: $outerRadius, in: 10...150, step: 1)
-                    .padding([.horizontal, .bottom])
-
-                Text("Distance: \(Int(distance))")
-                Slider(value: $distance, in: 1...150, step: 1)
-                    .padding([.horizontal, .bottom])
-
-                Text("Amount: \(amount, specifier: "%.2f")")
-                Slider(value: $amount)
-                    .padding([.horizontal, .bottom])
-
-                Text("Color")
-                Slider(value: $hue)
-                    .padding(.horizontal)
-            }
+            
+            ColorCyclingRectangle(countLine: Int(numberLine), amount: Double(amount))
+                .frame(width: 300, height: 200)
+                .padding()
+            Text("Count Line:")
+            Slider(value: $numberLine, in: 50...100)
+                .padding()
+            Text("Amount:")
+            Slider(value: $amount)
+                .padding()
+            
         }
     }
 }
