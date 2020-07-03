@@ -13,7 +13,11 @@ struct HabbitView: View {
     @ObservedObject var habbits: Habbits
     var number: Int{
         get{
-            number
+            if(self.habbits.stIndex(habbit: self.habbit) != nil){
+                return self.habbits.stIndex(habbit: self.habbit)!
+            }else{
+                return 0
+            }
         }
         set{
             if(self.habbits.stIndex(habbit: self.habbit) != nil){
