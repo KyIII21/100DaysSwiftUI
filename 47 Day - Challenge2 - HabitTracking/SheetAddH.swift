@@ -13,11 +13,17 @@ struct SheetAddH: View {
     @State private var description = ""
     @ObservedObject var listHabbits: Habbits
     @Environment(\.presentationMode) var prMode
+    @State var showingRequired = false
     
     func save(){
         //self.listHabbits.arrHabbits.append(Habbit(name: self.name, description: self.description))
-        self.listHabbits.add(habbit: Habbit(name: self.name, description: self.description))
-        self.prMode.wrappedValue.dismiss()
+        if self.name != "" {
+            self.listHabbits.add(habbit: Habbit(name: self.name, description: self.description))
+            self.prMode.wrappedValue.dismiss()
+        }else{
+            self.showingRequired = true
+        }
+        
         
     }
     
@@ -25,8 +31,10 @@ struct SheetAddH: View {
         NavigationView {
             VStack{
                 Form{
-                    Section(header: Text("Habbit name")){
+                    Section(header: Text("Habbit name").foregroundColor(self.showingRequired ? Color.red : nil)){
                         TextField("Ex. chess..", text: self.$name)
+                            
+                            
                     }
                     Section(header: Text("Description")){
                         TextField("What will You doing?", text: self.$description)
