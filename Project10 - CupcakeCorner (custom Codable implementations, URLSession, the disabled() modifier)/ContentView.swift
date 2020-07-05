@@ -10,40 +10,43 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var order = Order()
+    @State var showingRoot = false
 
     var body: some View {
         NavigationView {
             Form {
                 Section {
-                    Picker("Select your cake type", selection: $order.type) {
+                    Picker("Select your cake type", selection: $order.orderInStruct.type) {
                         ForEach(0..<Order.types.count) {
                             Text(Order.types[$0])
                         }
                     }
 
-                    Stepper(value: $order.quantity, in: 3...20) {
-                        Text("Number of cakes: \(order.quantity)")
+                    Stepper(value: $order.orderInStruct.quantity, in: 3...20) {
+                        Text("Number of cakes: \(order.orderInStruct.quantity)")
                     }
                 }
                 Section {
-                    Toggle(isOn: $order.specialRequestEnabled.animation()) {
+                    Toggle(isOn: $order.orderInStruct.specialRequestEnabled.animation()) {
                         Text("Any special requests?")
                     }
 
-                    if order.specialRequestEnabled {
-                        Toggle(isOn: $order.extraFrosting) {
+                    if order.orderInStruct.specialRequestEnabled {
+                        Toggle(isOn: $order.orderInStruct.extraFrosting) {
                             Text("Add extra frosting")
                         }
 
-                        Toggle(isOn: $order.addSprinkles) {
+                        Toggle(isOn: $order.orderInStruct.addSprinkles) {
                             Text("Add extra sprinkles")
                         }
                     }
                 }
                 Section {
-                    NavigationLink(destination: AddressView(order: order)) {
+                    NavigationLink(destination: AddressView(order: order, showingRoot2: self.$showingRoot ),
+                    isActive: self.$showingRoot) {
                         Text("Delivery details")
                     }
+                    //.isDetailLink(false)
                 }
             }
             .navigationBarTitle("Cupcake Corner")

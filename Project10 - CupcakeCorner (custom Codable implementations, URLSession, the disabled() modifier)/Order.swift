@@ -10,84 +10,79 @@ import SwiftUI
 
 class Order: ObservableObject, Codable {
     static let types = ["Vanilla", "Strawberry", "Chocolate", "Rainbow"]
+    
+    struct myOrder: Codable {
+        var type = 0
+        var quantity = 3
 
-    @Published var type = 0
-    @Published var quantity = 3
-
-    @Published var specialRequestEnabled = false{
-        didSet {
-            if specialRequestEnabled == false {
-                extraFrosting = false
-                addSprinkles = false
+        var specialRequestEnabled = false{
+            didSet {
+                if specialRequestEnabled == false {
+                    extraFrosting = false
+                    addSprinkles = false
+                }
             }
         }
-    }
-    @Published var extraFrosting = false
-    @Published var addSprinkles = false
-    //For AddressView
-    @Published var name = ""
-    @Published var streetAddress = ""
-    @Published var city = ""
-    @Published var zip = ""
-    //Check AddressView for empty
-    var hasValidAddress: Bool {
-        if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
-            return false
-        }
+        var extraFrosting = false
+        var addSprinkles = false
+        //For AddressView
+        var name = ""
+        var streetAddress = ""
+        var city = ""
+        var zip = ""
+        
+        //Check AddressView for empty
+        var hasValidAddress: Bool {
+            if name.isEmpty || streetAddress.isEmpty || city.isEmpty || zip.isEmpty {
+                return false
+            }
+            if name.hasPrefix(" ") || streetAddress.hasPrefix(" ") || city.hasPrefix(" ") || zip.hasPrefix(" "){
+                return false
+            }
+            if zip.count < 4 || streetAddress.count < 4{
+                return false
+            }
 
-        return true
+            return true
+        }
+        
+        var cost: Double {
+            // $2 per cake
+            var cost = Double(quantity) * 2
+
+            // complicated cakes cost more
+            cost += (Double(type) / 2)
+
+            // $1/cake for extra frosting
+            if extraFrosting {
+                cost += Double(quantity)
+            }
+
+            // $0.50/cake for sprinkles
+            if addSprinkles {
+                cost += Double(quantity) / 2
+            }
+
+            return cost
+        }
     }
+
+    @Published var orderInStruct = myOrder()
     
-    var cost: Double {
-        // $2 per cake
-        var cost = Double(quantity) * 2
-
-        // complicated cakes cost more
-        cost += (Double(type) / 2)
-
-        // $1/cake for extra frosting
-        if extraFrosting {
-            cost += Double(quantity)
-        }
-
-        // $0.50/cake for sprinkles
-        if addSprinkles {
-            cost += Double(quantity) / 2
-        }
-
-        return cost
-    }
+    
     //For can doing Codable Class
     enum CodingKeys: CodingKey {
-        case type, quantity, extraFrosting, addSprinkles, name, streetAddress, city, zip
+        case orderInStruct
     }
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
 
-        try container.encode(type, forKey: .type)
-        try container.encode(quantity, forKey: .quantity)
-
-        try container.encode(extraFrosting, forKey: .extraFrosting)
-        try container.encode(addSprinkles, forKey: .addSprinkles)
-
-        try container.encode(name, forKey: .name)
-        try container.encode(streetAddress, forKey: .streetAddress)
-        try container.encode(city, forKey: .city)
-        try container.encode(zip, forKey: .zip)
+        try container.encode(orderInStruct, forKey: .orderInStruct)
     }
     required init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        type = try container.decode(Int.self, forKey: .type)
-        quantity = try container.decode(Int.self, forKey: .quantity)
-
-        extraFrosting = try container.decode(Bool.self, forKey: .extraFrosting)
-        addSprinkles = try container.decode(Bool.self, forKey: .addSprinkles)
-
-        name = try container.decode(String.self, forKey: .name)
-        streetAddress = try container.decode(String.self, forKey: .streetAddress)
-        city = try container.decode(String.self, forKey: .city)
-        zip = try container.decode(String.self, forKey: .zip)
+        orderInStruct = try container.decode(myOrder.self, forKey: .orderInStruct)
     }
     //Can create empty class
     init() { }

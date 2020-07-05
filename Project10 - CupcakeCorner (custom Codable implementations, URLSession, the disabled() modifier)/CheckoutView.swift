@@ -12,6 +12,8 @@ struct CheckoutView: View {
     @ObservedObject var order: Order
     @State private var confirmationMessage = ""
     @State private var showingConfirmation = false
+    @State private var correctResponce = false
+    @Binding var showingRoot3: Bool
     
     func placeOrder() {
         guard let encoded = try? JSONEncoder().encode(order) else {
@@ -27,15 +29,19 @@ struct CheckoutView: View {
         
         URLSession.shared.dataTask(with: request) { data, response, error in
             guard let data = data else {
-                print("No data in response: \(error?.localizedDescription ?? "Unknown error").")
+                self.confirmationMessage = "No data in response: \(error?.localizedDescription ?? "Unknown error")."
+                self.correctResponce = false
+                self.showingConfirmation = true
                 return
             }
             if let decodedOrder = try? JSONDecoder().decode(Order.self, from: data) {
-                self.confirmationMessage = "Your order for \(decodedOrder.quantity)x \(Order.types[decodedOrder.type].lowercased()) cupcakes is on its way!"
-                self.showingConfirmation = true
+                self.confirmationMessage = "Your order for \(decodedOrder.orderInStruct.quantity)x \(Order.types[decodedOrder.orderInStruct.type].lowercased()) cupcakes is on its way!"
+                self.correctResponce = true
             } else {
-                print("Invalid response from server")
+                self.confirmationMessage = "Invalid response from server"
+                self.correctResponce = false
             }
+            self.showingConfirmation = true
         }.resume()
     }
 
@@ -48,7 +54,7 @@ struct CheckoutView: View {
                         .scaledToFit()
                         .frame(width: geo.size.width)
 
-                    Text("Your total is $\(self.order.cost, specifier: "%.2f")")
+                    Text("Your total is $\(self.order.orderInStruct.cost, specifier: "%.2f")")
                         .font(.title)
 
                     Button("Place Order") {
@@ -60,13 +66,15 @@ struct CheckoutView: View {
         }
         .navigationBarTitle("Check out", displayMode: .inline)
         .alert(isPresented: $showingConfirmation) {
-            Alert(title: Text("Thank you!"), message: Text(confirmationMessage), dismissButton: .default(Text("OK")))
+            Alert(title: correctResponce ? Text("Thank You!"): Text("Error!"), message: Text(confirmationMessage), dismissButton: .default(Text("Ok")){
+                    self.showingRoot3 = false
+                })
         }
     }
 }
 
-struct CheckoutView_Previews: PreviewProvider {
+/*struct CheckoutView_Previews: PreviewProvider {
     static var previews: some View {
         CheckoutView(order: Order())
     }
-}
+}*/
