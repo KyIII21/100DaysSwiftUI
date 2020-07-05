@@ -86,5 +86,8 @@ class Order: ObservableObject, Codable {
     }
     //Can create empty class
     init() { }
+    func deleteOrder(){
+        self.orderInStruct = myOrder()
+    }
 }
 

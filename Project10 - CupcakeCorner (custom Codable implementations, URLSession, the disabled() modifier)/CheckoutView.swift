@@ -68,6 +68,8 @@ struct CheckoutView: View {
         .alert(isPresented: $showingConfirmation) {
             Alert(title: correctResponce ? Text("Thank You!"): Text("Error!"), message: Text(confirmationMessage), dismissButton: .default(Text("Ok")){
                     self.showingRoot3 = false
+                    self.order.deleteOrder()
+                    
                 })
         }
     }
