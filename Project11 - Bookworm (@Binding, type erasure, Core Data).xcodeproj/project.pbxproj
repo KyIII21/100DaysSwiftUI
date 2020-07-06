@@ -14,6 +14,7 @@
 		4E92DF1224B3830700E98C9E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E92DF1124B3830700E98C9E /* Assets.xcassets */; };
 		4E92DF1524B3830700E98C9E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E92DF1424B3830700E98C9E /* Preview Assets.xcassets */; };
 		4E92DF1824B3830700E98C9E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E92DF1624B3830700E98C9E /* LaunchScreen.storyboard */; };
+		4E92DF4824B3A5C000E98C9E /* CCD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92DF4724B3A5BF00E98C9E /* CCD.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		4E92DF1424B3830700E98C9E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E92DF1724B3830700E98C9E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E92DF1924B3830700E98C9E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E92DF4724B3A5BF00E98C9E /* CCD.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CCD.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 				4E92DF0824B3830100E98C9E /* AppDelegate.swift */,
 				4E92DF0A24B3830100E98C9E /* SceneDelegate.swift */,
 				4E92DF0F24B3830100E98C9E /* ContentView.swift */,
+				4E92DF4724B3A5BF00E98C9E /* CCD.swift */,
 				4E92DF1124B3830700E98C9E /* Assets.xcassets */,
 				4E92DF1624B3830700E98C9E /* LaunchScreen.storyboard */,
 				4E92DF1924B3830700E98C9E /* Info.plist */,
@@ -152,6 +155,7 @@
 				4E92DF0924B3830100E98C9E /* AppDelegate.swift in Sources */,
 				4E92DF0B24B3830100E98C9E /* SceneDelegate.swift in Sources */,
 				4E92DF1024B3830100E98C9E /* ContentView.swift in Sources */,
+				4E92DF4824B3A5C000E98C9E /* CCD.swift in Sources */,
 				4E92DF0E24B3830100E98C9E /* Project11___Bookworm___Binding__type_erasure__Core_Data_.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
