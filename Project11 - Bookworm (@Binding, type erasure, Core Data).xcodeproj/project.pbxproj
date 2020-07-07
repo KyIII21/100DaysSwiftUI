@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4E58D2FB24B4B7C30022526B /* RatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58D2FA24B4B7C30022526B /* RatingView.swift */; };
+		4E58D2FD24B4C5210022526B /* EmojiRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58D2FC24B4C5210022526B /* EmojiRatingView.swift */; };
 		4E92DF0924B3830100E98C9E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92DF0824B3830100E98C9E /* AppDelegate.swift */; };
 		4E92DF0B24B3830100E98C9E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E92DF0A24B3830100E98C9E /* SceneDelegate.swift */; };
 		4E92DF0E24B3830100E98C9E /* Project11___Bookworm___Binding__type_erasure__Core_Data_.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4E92DF0C24B3830100E98C9E /* Project11___Bookworm___Binding__type_erasure__Core_Data_.xcdatamodeld */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		4E58D2FA24B4B7C30022526B /* RatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingView.swift; sourceTree = "<group>"; };
+		4E58D2FC24B4C5210022526B /* EmojiRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiRatingView.swift; sourceTree = "<group>"; };
 		4E92DF0524B3830100E98C9E /* Project11 - Bookworm (@Binding, type erasure, Core Data).app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project11 - Bookworm (@Binding, type erasure, Core Data).app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E92DF0824B3830100E98C9E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E92DF0A24B3830100E98C9E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -68,6 +70,7 @@
 				4E92DF0A24B3830100E98C9E /* SceneDelegate.swift */,
 				4E92DF0F24B3830100E98C9E /* ContentView.swift */,
 				4E58D2FA24B4B7C30022526B /* RatingView.swift */,
+				4E58D2FC24B4C5210022526B /* EmojiRatingView.swift */,
 				4E92DF4B24B46FDD00E98C9E /* AddBookView.swift */,
 				4E92DF4724B3A5BF00E98C9E /* CCD.swift */,
 				4E92DF1124B3830700E98C9E /* Assets.xcassets */,
@@ -162,6 +165,7 @@
 				4E92DF4C24B46FDD00E98C9E /* AddBookView.swift in Sources */,
 				4E92DF0B24B3830100E98C9E /* SceneDelegate.swift in Sources */,
 				4E92DF1024B3830100E98C9E /* ContentView.swift in Sources */,
+				4E58D2FD24B4C5210022526B /* EmojiRatingView.swift in Sources */,
 				4E92DF4824B3A5C000E98C9E /* CCD.swift in Sources */,
 				4E92DF0E24B3830100E98C9E /* Project11___Bookworm___Binding__type_erasure__Core_Data_.xcdatamodeld in Sources */,
 				4E58D2FB24B4B7C30022526B /* RatingView.swift in Sources */,
