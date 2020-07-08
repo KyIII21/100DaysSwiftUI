@@ -11,6 +11,9 @@ import CoreData
 
 struct DetailView: View {
     let book: Book
+    @Environment(\.managedObjectContext) var moc
+    @Environment(\.presentationMode) var presentationMode
+    @State private var showingDeleteAlert = false
     
     func checkForNil(item: String?, atReplace: String) -> String?{
         if item == nil || item == ""{
@@ -18,6 +21,13 @@ struct DetailView: View {
         }else{
             return item
         }
+    }
+    
+    func deleteBook() {
+        moc.delete(book)
+
+        try? self.moc.save()
+        presentationMode.wrappedValue.dismiss()
     }
     
     var body: some View {
@@ -48,8 +58,19 @@ struct DetailView: View {
 
                 Spacer()
             }
+            .alert(isPresented: self.$showingDeleteAlert) {
+                Alert(title: Text("Delete book \(self.book.title ?? "")"), message: Text("Are you sure?"), primaryButton: .destructive(Text("Delete")) {
+                        self.deleteBook()
+                    }, secondaryButton: .cancel()
+                )
+            }
         }
         .navigationBarTitle(Text(self.checkForNil(item: book.title, atReplace: "Unknown Book")!), displayMode: .inline)
+        .navigationBarItems(trailing: Button(action: {
+            self.showingDeleteAlert = true
+        }) {
+            Image(systemName: "trash")
+        })
     }
 }
 
