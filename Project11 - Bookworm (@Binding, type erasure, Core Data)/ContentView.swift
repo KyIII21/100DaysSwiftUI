@@ -17,6 +17,20 @@ struct ContentView: View {
     ]) var books: FetchedResults<Book>
 
     @State private var showingAddScreen = false
+    
+    func deleteBooks(at offsets: IndexSet) {
+        for offset in offsets {
+            // find this book in our fetch request
+            let book = books[offset]
+
+            // delete it from the context
+            moc.delete(book)
+        }
+
+        // save the context
+        try? moc.save()
+    }
+    
 
     var body: some View {
          NavigationView {
@@ -34,9 +48,10 @@ struct ContentView: View {
                         }
                     }
                 }
+                .onDelete(perform: deleteBooks)
             }
                 .navigationBarTitle("Bookworm")
-                .navigationBarItems(trailing: Button(action: {
+                .navigationBarItems(leading: EditButton(), trailing: Button(action: {
                     self.showingAddScreen.toggle()
                 }) {
                     Image(systemName: "plus")
