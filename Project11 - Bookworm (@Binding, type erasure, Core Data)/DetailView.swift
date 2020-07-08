@@ -15,6 +15,21 @@ struct DetailView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var showingDeleteAlert = false
     
+    func dateFormat() -> String{
+        let dateFormatter = DateFormatter()
+
+        //dateFormatter.dateStyle = .short
+        //dateFormatter.timeStyle = .short
+        dateFormatter.dateFormat = "dd MMM yy [HH:mm]"
+        
+        if let date = book.date {
+            return dateFormatter.string(from: date)
+        }else{
+            return "Maybe in a past life?"
+        }
+        
+    }
+    
     func checkForNil(item: String?, atReplace: String) -> String?{
         if item == nil || item == ""{
             return atReplace
@@ -34,10 +49,10 @@ struct DetailView: View {
         GeometryReader { geometry in
             VStack {
                 ZStack(alignment: .bottomTrailing) {
-                    Image(self.checkForNil(item: self.book.genre, atReplace: "Fantasy")!)
+                    Image(self.checkForNil(item: self.book.genre, atReplace: "Unknown")!)
                         .frame(maxWidth: geometry.size.width)
 
-                    Text(self.checkForNil(item: self.book.genre, atReplace: "Fantasy")!.uppercased())
+                    Text(self.checkForNil(item: self.book.genre, atReplace: "Unknown")!.uppercased())
                         .font(.caption)
                         .fontWeight(.black)
                         .padding(8)
@@ -55,6 +70,9 @@ struct DetailView: View {
 
                 RatingView(rating: .constant(Int(self.book.rating)))
                     .font(.largeTitle)
+                
+                Text("Date added: \(self.dateFormat())")
+                    .padding()
 
                 Spacer()
             }
@@ -84,6 +102,7 @@ struct DetailView_Previews: PreviewProvider {
         book.genre = ""
         book.rating = 4
         book.review = ""
+        book.date = Date()
 
         return NavigationView {
             DetailView(book: book)
