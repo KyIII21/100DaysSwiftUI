@@ -16,6 +16,9 @@
 		4EBA27F124B7241E0050F1EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27EF24B7241E0050F1EA /* LaunchScreen.storyboard */; };
 		4EBA280824B72C0B0050F1EA /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */; };
 		4EBA280924B72C0B0050F1EA /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */; };
+		4EBA280F24B732D30050F1EA /* WizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280E24B732D30050F1EA /* WizardView.swift */; };
+		4EBA281224B736CC0050F1EA /* Wizard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281024B736CC0050F1EA /* Wizard+CoreDataClass.swift */; };
+		4EBA281324B736CC0050F1EA /* Wizard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281124B736CC0050F1EA /* Wizard+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		4EBA27F224B7241E0050F1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4EBA280E24B732D30050F1EA /* WizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardView.swift; sourceTree = "<group>"; };
+		4EBA281024B736CC0050F1EA /* Wizard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wizard+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EBA281124B736CC0050F1EA /* Wizard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wizard+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +68,9 @@
 		4EBA27E024B7241C0050F1EA /* Project12 - CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA281024B736CC0050F1EA /* Wizard+CoreDataClass.swift */,
+				4EBA281124B736CC0050F1EA /* Wizard+CoreDataProperties.swift */,
+				4EBA280E24B732D30050F1EA /* WizardView.swift */,
 				4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */,
 				4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */,
 				4EBA27E124B7241C0050F1EA /* AppDelegate.swift */,
@@ -157,8 +166,11 @@
 			files = (
 				4EBA27E224B7241C0050F1EA /* AppDelegate.swift in Sources */,
 				4EBA27E424B7241C0050F1EA /* SceneDelegate.swift in Sources */,
+				4EBA281324B736CC0050F1EA /* Wizard+CoreDataProperties.swift in Sources */,
+				4EBA281224B736CC0050F1EA /* Wizard+CoreDataClass.swift in Sources */,
 				4EBA27E924B7241C0050F1EA /* ContentView.swift in Sources */,
 				4EBA280824B72C0B0050F1EA /* Movie+CoreDataClass.swift in Sources */,
+				4EBA280F24B732D30050F1EA /* WizardView.swift in Sources */,
 				4EBA280924B72C0B0050F1EA /* Movie+CoreDataProperties.swift in Sources */,
 				4EBA27E724B7241C0050F1EA /* Project12___CoreData.xcdatamodeld in Sources */,
 			);
