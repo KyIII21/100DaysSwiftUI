@@ -12,13 +12,14 @@
 		4EBA27E724B7241C0050F1EA /* Project12___CoreData.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA27E524B7241C0050F1EA /* Project12___CoreData.xcdatamodeld */; };
 		4EBA27E924B7241C0050F1EA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA27E824B7241C0050F1EA /* ContentView.swift */; };
 		4EBA27EB24B7241E0050F1EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27EA24B7241E0050F1EA /* Assets.xcassets */; };
-		4EBA27EE24B7241E0050F1EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27ED24B7241E0050F1EA /* Preview Assets.xcassets */; };
-		4EBA27F124B7241E0050F1EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27EF24B7241E0050F1EA /* LaunchScreen.storyboard */; };
 		4EBA280824B72C0B0050F1EA /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */; };
 		4EBA280924B72C0B0050F1EA /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */; };
 		4EBA280F24B732D30050F1EA /* WizardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280E24B732D30050F1EA /* WizardView.swift */; };
 		4EBA281224B736CC0050F1EA /* Wizard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281024B736CC0050F1EA /* Wizard+CoreDataClass.swift */; };
 		4EBA281324B736CC0050F1EA /* Wizard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281124B736CC0050F1EA /* Wizard+CoreDataProperties.swift */; };
+		4EBA281524B73AAD0050F1EA /* ShipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281424B73AAD0050F1EA /* ShipView.swift */; };
+		4EBA281824B73BF30050F1EA /* Ship+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281624B73BF30050F1EA /* Ship+CoreDataClass.swift */; };
+		4EBA281924B73BF30050F1EA /* Ship+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA281724B73BF30050F1EA /* Ship+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,9 @@
 		4EBA280E24B732D30050F1EA /* WizardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WizardView.swift; sourceTree = "<group>"; };
 		4EBA281024B736CC0050F1EA /* Wizard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wizard+CoreDataClass.swift"; sourceTree = "<group>"; };
 		4EBA281124B736CC0050F1EA /* Wizard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wizard+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		4EBA281424B73AAD0050F1EA /* ShipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShipView.swift; sourceTree = "<group>"; };
+		4EBA281624B73BF30050F1EA /* Ship+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ship+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EBA281724B73BF30050F1EA /* Ship+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Ship+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,8 @@
 		4EBA27E024B7241C0050F1EA /* Project12 - CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA281624B73BF30050F1EA /* Ship+CoreDataClass.swift */,
+				4EBA281724B73BF30050F1EA /* Ship+CoreDataProperties.swift */,
 				4EBA281024B736CC0050F1EA /* Wizard+CoreDataClass.swift */,
 				4EBA281124B736CC0050F1EA /* Wizard+CoreDataProperties.swift */,
 				4EBA280E24B732D30050F1EA /* WizardView.swift */,
@@ -80,6 +86,7 @@
 				4EBA27EF24B7241E0050F1EA /* LaunchScreen.storyboard */,
 				4EBA27F224B7241E0050F1EA /* Info.plist */,
 				4EBA27E524B7241C0050F1EA /* Project12___CoreData.xcdatamodeld */,
+				4EBA281424B73AAD0050F1EA /* ShipView.swift */,
 				4EBA27EC24B7241E0050F1EA /* Preview Content */,
 			);
 			path = "Project12 - CoreData";
@@ -151,8 +158,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4EBA27F124B7241E0050F1EA /* LaunchScreen.storyboard in Resources */,
-				4EBA27EE24B7241E0050F1EA /* Preview Assets.xcassets in Resources */,
 				4EBA27EB24B7241E0050F1EA /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,13 +171,16 @@
 			files = (
 				4EBA27E224B7241C0050F1EA /* AppDelegate.swift in Sources */,
 				4EBA27E424B7241C0050F1EA /* SceneDelegate.swift in Sources */,
+				4EBA281524B73AAD0050F1EA /* ShipView.swift in Sources */,
 				4EBA281324B736CC0050F1EA /* Wizard+CoreDataProperties.swift in Sources */,
+				4EBA281824B73BF30050F1EA /* Ship+CoreDataClass.swift in Sources */,
 				4EBA281224B736CC0050F1EA /* Wizard+CoreDataClass.swift in Sources */,
 				4EBA27E924B7241C0050F1EA /* ContentView.swift in Sources */,
 				4EBA280824B72C0B0050F1EA /* Movie+CoreDataClass.swift in Sources */,
 				4EBA280F24B732D30050F1EA /* WizardView.swift in Sources */,
 				4EBA280924B72C0B0050F1EA /* Movie+CoreDataProperties.swift in Sources */,
 				4EBA27E724B7241C0050F1EA /* Project12___CoreData.xcdatamodeld in Sources */,
+				4EBA281924B73BF30050F1EA /* Ship+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
