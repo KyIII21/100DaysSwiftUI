@@ -14,6 +14,8 @@
 		4EBA27EB24B7241E0050F1EA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27EA24B7241E0050F1EA /* Assets.xcassets */; };
 		4EBA27EE24B7241E0050F1EA /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27ED24B7241E0050F1EA /* Preview Assets.xcassets */; };
 		4EBA27F124B7241E0050F1EA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EBA27EF24B7241E0050F1EA /* LaunchScreen.storyboard */; };
+		4EBA280824B72C0B0050F1EA /* Movie+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */; };
+		4EBA280924B72C0B0050F1EA /* Movie+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		4EBA27ED24B7241E0050F1EA /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4EBA27F024B7241E0050F1EA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4EBA27F224B7241E0050F1EA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataClass.swift"; sourceTree = "<group>"; };
+		4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 		4EBA27E024B7241C0050F1EA /* Project12 - CoreData */ = {
 			isa = PBXGroup;
 			children = (
+				4EBA280624B72C0B0050F1EA /* Movie+CoreDataClass.swift */,
+				4EBA280724B72C0B0050F1EA /* Movie+CoreDataProperties.swift */,
 				4EBA27E124B7241C0050F1EA /* AppDelegate.swift */,
 				4EBA27E324B7241C0050F1EA /* SceneDelegate.swift */,
 				4EBA27E824B7241C0050F1EA /* ContentView.swift */,
@@ -152,6 +158,8 @@
 				4EBA27E224B7241C0050F1EA /* AppDelegate.swift in Sources */,
 				4EBA27E424B7241C0050F1EA /* SceneDelegate.swift in Sources */,
 				4EBA27E924B7241C0050F1EA /* ContentView.swift in Sources */,
+				4EBA280824B72C0B0050F1EA /* Movie+CoreDataClass.swift in Sources */,
+				4EBA280924B72C0B0050F1EA /* Movie+CoreDataProperties.swift in Sources */,
 				4EBA27E724B7241C0050F1EA /* Project12___CoreData.xcdatamodeld in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
