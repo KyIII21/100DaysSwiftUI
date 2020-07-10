@@ -11,12 +11,33 @@ import SwiftUI
 struct SingView: View {
     @Environment(\.managedObjectContext) var moc
     @State private var lastNameFilter = "A"
+    @State private var sortDescr: NSSortDescriptor = NSSortDescriptor(keyPath: \Singer.firstName, ascending: true)
+    
+    enum Predicates: String, CaseIterable, Hashable, Identifiable{
+        case beginsWith = "BEGINSWITH"
+        case contains = "CONTAINS"
+        case beginsWithReg = "BEGINSWITH[c]"
+        case containsReg = "CONTAINS[c]"
+        case equal = "=="
+        case greater = ">"
+        case smaller = "<"
+        
+        var id: Predicates {self}
+    }
+    @State private var howSortPredicate: Predicates = .beginsWith
     
     var body: some View {
         VStack {
-            FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+            /*FilteredList(filterKey: "lastName", filterValue: lastNameFilter) { (singer: Singer) in
+                Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
+            }*/
+//            FilteredList(filterKey: "lastName", filterValue: lastNameFilter, sortDescr: [self.sortDescr]) { (singer: Singer) in
+//                Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
+//            }
+            FilteredList(strPredicate: self.howSortPredicate, filterKey: "lastName", filterValue: lastNameFilter, sortDescr: [self.sortDescr]) { (singer: Singer) in
                 Text("\(singer.wrappedFirstName) \(singer.wrappedLastName)")
             }
+            
 
             Button("Add Examples") {
                 let taylor = Singer(context: self.moc)
@@ -46,6 +67,29 @@ struct SingView: View {
 
             Button("Show S") {
                 self.lastNameFilter = "S"
+            }
+            Picker(selection: self.$howSortPredicate, label: Text("")){
+                ForEach(Predicates.allCases){ myCase in
+                    Text("\(myCase.rawValue.lowercased())")
+                        .font(.caption)
+                }
+            }
+                .pickerStyle(SegmentedPickerStyle())
+            
+            Button("Change Sort") {
+                if self.sortDescr.keyPath == \Singer.firstName{
+                    self.sortDescr = NSSortDescriptor(keyPath:  \Singer.lastName, ascending: self.sortDescr.ascending)
+                }else{
+                    self.sortDescr = NSSortDescriptor(keyPath:  \Singer.firstName , ascending: self.sortDescr.ascending)
+                }
+            }
+            Button("Change Sort Asc") {
+                if self.sortDescr.ascending{
+                    self.sortDescr = NSSortDescriptor(keyPath: self.sortDescr.keyPath == \Singer.firstName ? \Singer.firstName : \Singer.lastName, ascending: false)
+                }else{
+                    self.sortDescr = NSSortDescriptor(keyPath: self.sortDescr.keyPath == \Singer.firstName ? \Singer.firstName : \Singer.lastName, ascending: true)
+                }
+                
             }
         }
     }

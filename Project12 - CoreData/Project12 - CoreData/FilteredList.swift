@@ -27,6 +27,22 @@ struct FilteredList<T: NSManagedObject, Content: View>: View {
         self.content = content
     }
     
+    init(sortDescr: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content){
+        fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: sortDescr, predicate: nil)
+        //NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue)
+        self.content = content
+    }
+    
+    init(filterKey: String, filterValue: String, sortDescr: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content){
+        fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: sortDescr, predicate: NSPredicate(format: "%K BEGINSWITH %@", filterKey, filterValue))
+        self.content = content
+    }
+    
+    init(strPredicate: SingView.Predicates, filterKey: String, filterValue: String, sortDescr: [NSSortDescriptor], @ViewBuilder content: @escaping (T) -> Content){
+        fetchRequest = FetchRequest<T>(entity: T.entity(), sortDescriptors: sortDescr, predicate: NSPredicate(format: "%K " + strPredicate.rawValue + " %@", filterKey, filterValue))
+        self.content = content
+    }
+    
 
 }
 
