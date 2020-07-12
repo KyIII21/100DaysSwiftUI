@@ -22,6 +22,8 @@ struct ContentView: View {
             if let data = data{
                 if self.decodeFromData(data: data){
                     return
+                }else{
+                    fatalError("Fatal Error: Decoding, see above for know reason")
                 }
             }
             fatalError("Fatal Error: \(error?.localizedDescription ?? "Unknown error")")
@@ -54,11 +56,19 @@ struct ContentView: View {
     }
     
     var body: some View {
-        List{
-            ForEach(self.users, id: \.name){ user in
-                Text("\(user.name)")
-            }
-        }.onAppear(perform: self.getListOfUsersFromServer)
+        NavigationView{
+            List{
+                ForEach(self.users, id: \.name){ user in
+                    NavigationLink(destination: UserView(user: user)){
+                        HStack{
+                            Text(user.isActive ? "  ✅" : "  ⛔️")
+                            Text("\(user.name)")
+                        }
+                    }
+                }
+            }.onAppear(perform: self.getListOfUsersFromServer)
+            .navigationBarTitle("ListOfUsers")
+        }
     }
 }
 

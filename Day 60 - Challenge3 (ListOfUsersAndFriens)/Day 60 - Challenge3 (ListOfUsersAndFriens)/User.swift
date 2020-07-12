@@ -25,8 +25,14 @@ struct User: Codable, Hashable {
     var tags: [String]
     var friends: [Friend]
     
+    var registeredDate: Date{
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZ"
+        return dateFormatter.date(from:registered)!
+    }
+    
     struct Friend: Codable, Hashable{
-        var id: String
+        var id: UUID
         var name: String
     }
     
