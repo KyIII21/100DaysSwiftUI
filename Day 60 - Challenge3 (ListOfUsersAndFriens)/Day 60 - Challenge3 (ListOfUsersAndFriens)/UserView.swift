@@ -9,7 +9,8 @@
 import SwiftUI
 
 struct UserView: View {
-    var user: User
+    let user: User
+    let users: [User]
     @State var showingAllRows = false
     
     func dateFormat() -> String{
@@ -20,107 +21,85 @@ struct UserView: View {
         return dateFormater.string(from: self.user.registeredDate)
     }
     
-//    func tagsView(i: Int) -> some View{
-//        return HStack {
-//            ForEach(i*3..<self.user.tags.count){ j in
-//                    //Ellipse()
-//
-//                    Button(action: {}) {
-//
-//                        Text(self.user.tags[j])
-//
-//                    }
-//                    .padding()
-//                    .foregroundColor(.white)
-//                    .background(Color.orange)
-//                    .cornerRadius(.infinity)
-//                    .lineLimit(1)
-//                }
-//            }
-//        .lineLimit(1)
-//    }
+    func searchUser(friend: User.Friend) -> some View{
+        for user in self.users{
+            if user.id == friend.id{
+                return AnyView(NavigationLink(destination: UserView( user:  user, users: self.users)){
+                    Text("\(friend.name)")
+                })
+            }
+        }
+        return AnyView(Text("\(friend.name)"))
+        //return self.users.filter{ $0.id == id }[0]
+    }
     
     var body: some View {
-        NavigationView{
-            Form{
-                Section{
-                    HStack{
-                        Text("Age")
-                        Spacer()
-                        Text("\(user.age)")
-                            .foregroundColor(Color.gray)
+        Form{
+            Section{
+                HStack{
+                    Text("Age")
+                    Spacer()
+                    Text("\(user.age)")
+                        .foregroundColor(Color.gray)
 //                        Text(user.isActive ? "Active" : "Busy")
 //                            .foregroundColor(user.isActive ? Color.green : Color.red)
+                }
+            }
+            Section(header: Text("Contact Info")){
+                HStack{
+                    Text("Company")
+                    Spacer()
+                    Text("\(user.company)")
+                        .foregroundColor(Color.gray)
+                        .multilineTextAlignment(.trailing)
+                }
+                HStack{
+                    Text("Email")
+                    Spacer()
+                    Text("\(user.email)")
+                        .foregroundColor(Color.gray)
+                        .multilineTextAlignment(.trailing)
+                }
+                HStack{
+                    Text("Address   ")
+                    Spacer()
+                    Text("\(user.address)")
+                        .foregroundColor(Color.gray)
+                        .multilineTextAlignment(.trailing)
+                }
+            }
+            Section(header: Text("Date & Time Registered")){
+                HStack{
+                    Text("Registered")
+                    Spacer()
+                    Text("\(self.dateFormat())")
+                        .foregroundColor(Color.gray)
+                        .multilineTextAlignment(.trailing)
+                }
+            }
+            Section(header: Text("About")){
+                VStack{
+                    Text("\(user.about)")
+                        .foregroundColor(Color.gray)
+                        .lineLimit(self.showingAllRows ? nil : 2)
+                    Button(action: {self.showingAllRows.toggle()}){
+                        Text(self.showingAllRows ? "Hide" : "Read more")
                     }
                 }
-                Section(header: Text("Contact Info")){
-                    HStack{
-                        Text("Company")
-                        Spacer()
-                        Text("\(user.company)")
-                            .foregroundColor(Color.gray)
-                            .multilineTextAlignment(.trailing)
-                    }
-                    HStack{
-                        Text("Email")
-                        Spacer()
-                        Text("\(user.email)")
-                            .foregroundColor(Color.gray)
-                            .multilineTextAlignment(.trailing)
-                    }
-                    HStack{
-                        Text("Address   ")
-                        Spacer()
-                        Text("\(user.address)")
-                            .foregroundColor(Color.gray)
-                            .multilineTextAlignment(.trailing)
-                    }
-                }
-                Section(header: Text("Date & Time Registered")){
-                    HStack{
-                        Text("Registered")
-                        Spacer()
-                        Text("\(self.dateFormat())")
-                            .foregroundColor(Color.gray)
-                            .multilineTextAlignment(.trailing)
-                    }
-                }
-                Section(header: Text("About")){
-                    VStack{
-                        Text("\(user.about)")
-                            .foregroundColor(Color.gray)
-                            .lineLimit(self.showingAllRows ? nil : 2)
-                        Button(action: {self.showingAllRows.toggle()}){
-                            Text(self.showingAllRows ? "Hide" : "Read more")
-                        }
-                    }
+                
+            }
+            Section(header: Text("Tags")){
+                TagsView(tags: self.user.unicTags)
+                    .frame(height: 80) // Придкмать как получить нужный размер из view
+            }
+            Section(header: Text("Friends")){
+                ForEach(self.user.friends, id: \User.Friend.name){ friend in
+                    self.searchUser(friend: friend)
                     
                 }
-                VStack{
-                ForEach(self.user.tags, id: \.self){ tag in
-                    //Ellipse()
-                
-                    Button(action: {}) {
-                        
-                        Text(tag)
-                        
-                    }
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.orange)
-                    .cornerRadius(.infinity)
-                    .lineLimit(1)
-                
-                }
-                }
-//                Section(header: Text("Tags")){
-//                    self.tagsView(i: 0)
-//                    self.tagsView(i: 1)
-//                    self.tagsView(i: 2)
-//                }
             }
-            .navigationBarTitle(user.name + (user.isActive ? "  ✅" : "  ⛔️"))
         }
+        .navigationBarTitle(user.name + (user.isActive ? "  ✅" : "  ⛔️"))
     }
 }
 
@@ -136,6 +115,6 @@ struct UserView_Previews: PreviewProvider {
         "tempor"
     ], friends: [User.Friend(id: UUID(uuidString: "91b5be3d-9a19-4ac2-b2ce-89cc41884ed0")!, name: "Hawkins Patel"), User.Friend(id: UUID(uuidString:"0c395a95-57e2-4d53-b4f6-9b9e46a32cf6")!, name: "Jewel Sexton")])
     static var previews: some View {
-        UserView(user: user)
+        UserView(user: user, users: [User]())
     }
 }

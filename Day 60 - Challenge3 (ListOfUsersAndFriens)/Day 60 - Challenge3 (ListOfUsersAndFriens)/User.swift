@@ -31,6 +31,16 @@ struct User: Codable, Hashable {
         return dateFormatter.date(from:registered)!
     }
     
+    var unicTags: [String]{
+        var unic = [String]()
+        for tag in tags{
+            if !unic.contains(tag){
+                unic.append(tag)
+            }
+        }
+        return unic
+    }
+    
     struct Friend: Codable, Hashable{
         var id: UUID
         var name: String

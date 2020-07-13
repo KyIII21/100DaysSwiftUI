@@ -15,6 +15,7 @@
 		4E0F08BE24BA4DFF0059654A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E0F08BC24BA4DFF0059654A /* LaunchScreen.storyboard */; };
 		4E0F08C624BA4E8E0059654A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E0F08C524BA4E8E0059654A /* User.swift */; };
 		4E91427124BB70A100B3041B /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E91427024BB70A100B3041B /* UserView.swift */; };
+		4E91427324BC55C300B3041B /* TagsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E91427224BC55C200B3041B /* TagsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		4E0F08BF24BA4DFF0059654A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E0F08C524BA4E8E0059654A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4E91427024BB70A100B3041B /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
+		4E91427224BC55C200B3041B /* TagsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,6 +67,7 @@
 				4E0F08B324BA4DF50059654A /* SceneDelegate.swift */,
 				4E0F08B524BA4DF50059654A /* ContentView.swift */,
 				4E91427024BB70A100B3041B /* UserView.swift */,
+				4E91427224BC55C200B3041B /* TagsView.swift */,
 				4E0F08B724BA4DFF0059654A /* Assets.xcassets */,
 				4E0F08BC24BA4DFF0059654A /* LaunchScreen.storyboard */,
 				4E0F08BF24BA4DFF0059654A /* Info.plist */,
@@ -157,6 +160,7 @@
 				4E91427124BB70A100B3041B /* UserView.swift in Sources */,
 				4E0F08B424BA4DF50059654A /* SceneDelegate.swift in Sources */,
 				4E0F08B624BA4DF50059654A /* ContentView.swift in Sources */,
+				4E91427324BC55C300B3041B /* TagsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

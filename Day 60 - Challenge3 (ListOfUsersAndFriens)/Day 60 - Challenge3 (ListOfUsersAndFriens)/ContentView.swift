@@ -59,7 +59,7 @@ struct ContentView: View {
         NavigationView{
             List{
                 ForEach(self.users, id: \.name){ user in
-                    NavigationLink(destination: UserView(user: user)){
+                    NavigationLink(destination: UserView(user: user, users: self.users)){
                         HStack{
                             Text(user.isActive ? "  ✅" : "  ⛔️")
                             Text("\(user.name)")
