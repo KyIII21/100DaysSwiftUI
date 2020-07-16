@@ -18,6 +18,10 @@ struct ContentView: View {
     func loadImage() {
         guard let inputImage = inputImage else { return }
         image = Image(uiImage: inputImage)
+        //Сохранение фото в библиотеку
+        //UIImageWriteToSavedPhotosAlbum(inputImage, nil, nil, nil)
+        let imageSaver = ImageSaver()
+        imageSaver.writeToPhotoAlbum(image: inputImage)
     }
 
     var body: some View {
