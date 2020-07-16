@@ -15,6 +15,8 @@
 		4E03C3C024BE47E7000BFE7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E03C3BE24BE47E7000BFE7E /* LaunchScreen.storyboard */; };
 		4E03C3C824BE4DCE000BFE7E /* BindingLearn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03C3C724BE4DCE000BFE7E /* BindingLearn.swift */; };
 		4E03C3CA24BE5114000BFE7E /* actionSheetLearn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03C3C924BE5114000BFE7E /* actionSheetLearn.swift */; };
+		4E03C3CC24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03C3CB24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift */; };
+		4E8A9CEF24C0E5B40032E596 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A9CEE24C0E5B40032E596 /* ImagePicker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		4E03C3C124BE47E7000BFE7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E03C3C724BE4DCE000BFE7E /* BindingLearn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingLearn.swift; sourceTree = "<group>"; };
 		4E03C3C924BE5114000BFE7E /* actionSheetLearn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = actionSheetLearn.swift; sourceTree = "<group>"; };
+		4E03C3CB24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationCoreImageWithSUI.swift; sourceTree = "<group>"; };
+		4E8A9CEE24C0E5B40032E596 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +67,8 @@
 				4E03C3B324BE47E2000BFE7E /* AppDelegate.swift */,
 				4E03C3B524BE47E2000BFE7E /* SceneDelegate.swift */,
 				4E03C3B724BE47E2000BFE7E /* ContentView.swift */,
+				4E03C3CB24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift */,
+				4E8A9CEE24C0E5B40032E596 /* ImagePicker.swift */,
 				4E03C3C924BE5114000BFE7E /* actionSheetLearn.swift */,
 				4E03C3C724BE4DCE000BFE7E /* BindingLearn.swift */,
 				4E03C3B924BE47E7000BFE7E /* Assets.xcassets */,
@@ -153,7 +159,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E03C3B424BE47E2000BFE7E /* AppDelegate.swift in Sources */,
+				4E03C3CC24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift in Sources */,
 				4E03C3B624BE47E2000BFE7E /* SceneDelegate.swift in Sources */,
+				4E8A9CEF24C0E5B40032E596 /* ImagePicker.swift in Sources */,
 				4E03C3C824BE4DCE000BFE7E /* BindingLearn.swift in Sources */,
 				4E03C3B824BE47E2000BFE7E /* ContentView.swift in Sources */,
 				4E03C3CA24BE5114000BFE7E /* actionSheetLearn.swift in Sources */,
