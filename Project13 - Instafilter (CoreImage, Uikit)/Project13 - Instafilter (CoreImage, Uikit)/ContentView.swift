@@ -13,6 +13,13 @@ import CoreImage.CIFilterBuiltins
 struct ContentView: View {
     @State private var image: Image?
     @State private var filterIntensity = 0.5
+    @State private var showingImagePicker = false
+    @State private var inputImage: UIImage?
+    
+    func loadImage() {
+        guard let inputImage = inputImage else { return }
+        image = Image(uiImage: inputImage)
+    }
 
     var body: some View {
         NavigationView {
@@ -32,7 +39,7 @@ struct ContentView: View {
                     }
                 }
                 .onTapGesture {
-                    // select an image
+                    self.showingImagePicker = true
                 }
 
                 HStack {
@@ -54,6 +61,9 @@ struct ContentView: View {
             }
             .padding([.horizontal, .bottom])
             .navigationBarTitle("Instafilter")
+            .sheet(isPresented: $showingImagePicker, onDismiss: loadImage) {
+                ImagePicker(image: self.$inputImage)
+            }
         }
     }
 }
