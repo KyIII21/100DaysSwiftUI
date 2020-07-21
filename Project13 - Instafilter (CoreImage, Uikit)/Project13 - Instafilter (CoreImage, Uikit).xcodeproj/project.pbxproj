@@ -16,6 +16,7 @@
 		4E03C3C824BE4DCE000BFE7E /* BindingLearn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03C3C724BE4DCE000BFE7E /* BindingLearn.swift */; };
 		4E03C3CA24BE5114000BFE7E /* actionSheetLearn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03C3C924BE5114000BFE7E /* actionSheetLearn.swift */; };
 		4E03C3CC24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E03C3CB24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift */; };
+		4E24FE4824C794F3003ED59B /* ImageSaver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E24FE4724C794F3003ED59B /* ImageSaver.swift */; };
 		4E8A9CEF24C0E5B40032E596 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A9CEE24C0E5B40032E596 /* ImagePicker.swift */; };
 		4E8A9CF124C0FFB60032E596 /* SaveImageInLibrary.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8A9CF024C0FFB60032E596 /* SaveImageInLibrary.swift */; };
 		4EE44B6924C391A400D73098 /* SaveImageInLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EE44B6824C391A400D73098 /* SaveImageInLibraryView.swift */; };
@@ -33,6 +34,7 @@
 		4E03C3C724BE4DCE000BFE7E /* BindingLearn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BindingLearn.swift; sourceTree = "<group>"; };
 		4E03C3C924BE5114000BFE7E /* actionSheetLearn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = actionSheetLearn.swift; sourceTree = "<group>"; };
 		4E03C3CB24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntegrationCoreImageWithSUI.swift; sourceTree = "<group>"; };
+		4E24FE4724C794F3003ED59B /* ImageSaver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSaver.swift; sourceTree = "<group>"; };
 		4E8A9CEE24C0E5B40032E596 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		4E8A9CF024C0FFB60032E596 /* SaveImageInLibrary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageInLibrary.swift; sourceTree = "<group>"; };
 		4EE44B6824C391A400D73098 /* SaveImageInLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveImageInLibraryView.swift; sourceTree = "<group>"; };
@@ -71,6 +73,7 @@
 				4E03C3B324BE47E2000BFE7E /* AppDelegate.swift */,
 				4E03C3B524BE47E2000BFE7E /* SceneDelegate.swift */,
 				4E03C3B724BE47E2000BFE7E /* ContentView.swift */,
+				4E24FE4724C794F3003ED59B /* ImageSaver.swift */,
 				4E8A9CF024C0FFB60032E596 /* SaveImageInLibrary.swift */,
 				4EE44B6824C391A400D73098 /* SaveImageInLibraryView.swift */,
 				4E03C3CB24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift */,
@@ -169,6 +172,7 @@
 				4E8A9CF124C0FFB60032E596 /* SaveImageInLibrary.swift in Sources */,
 				4E03C3CC24BE5FF1000BFE7E /* IntegrationCoreImageWithSUI.swift in Sources */,
 				4E03C3B624BE47E2000BFE7E /* SceneDelegate.swift in Sources */,
+				4E24FE4824C794F3003ED59B /* ImageSaver.swift in Sources */,
 				4E8A9CEF24C0E5B40032E596 /* ImagePicker.swift in Sources */,
 				4E03C3C824BE4DCE000BFE7E /* BindingLearn.swift in Sources */,
 				4E03C3B824BE47E2000BFE7E /* ContentView.swift in Sources */,
