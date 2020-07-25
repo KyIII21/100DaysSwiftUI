@@ -12,9 +12,8 @@ import SwiftUI
 struct ContentView: View {
 
     var body: some View {
-        Group {
-           Text("1")
-        }
+        MapView()
+            .edgesIgnoringSafeArea(.all)
     }
 }
 
