@@ -13,6 +13,7 @@
 		4E2B88F924CB07A10043858B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E2B88F824CB07A10043858B /* Assets.xcassets */; };
 		4E2B88FC24CB07A10043858B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E2B88FB24CB07A10043858B /* Preview Assets.xcassets */; };
 		4E2B88FF24CB07A10043858B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E2B88FD24CB07A10043858B /* LaunchScreen.storyboard */; };
+		4E7348F724CD851F006AE519 /* authenticateUnlock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E7348F624CD851F006AE519 /* authenticateUnlock.swift */; };
 		4E81139624CB8FA0002068A1 /* SaveToDocDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81139524CB8FA0002068A1 /* SaveToDocDir.swift */; };
 		4E81139824CB906F002068A1 /* SwitchViewStateEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E81139724CB906F002068A1 /* SwitchViewStateEnum.swift */; };
 		4EFD0B0324CCBE2F00F50F25 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFD0B0224CCBE2F00F50F25 /* MapView.swift */; };
@@ -27,6 +28,7 @@
 		4E2B88FB24CB07A10043858B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4E2B88FE24CB07A10043858B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E2B890024CB07A10043858B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		4E7348F624CD851F006AE519 /* authenticateUnlock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = authenticateUnlock.swift; sourceTree = "<group>"; };
 		4E81139524CB8FA0002068A1 /* SaveToDocDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToDocDir.swift; sourceTree = "<group>"; };
 		4E81139724CB906F002068A1 /* SwitchViewStateEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitchViewStateEnum.swift; sourceTree = "<group>"; };
 		4EFD0B0224CCBE2F00F50F25 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 		4E2B88F124CB07930043858B /* Project14 - BucketList */ = {
 			isa = PBXGroup;
 			children = (
+				4E7348F624CD851F006AE519 /* authenticateUnlock.swift */,
 				4E2B88F224CB07930043858B /* AppDelegate.swift */,
 				4E2B88F424CB07930043858B /* SceneDelegate.swift */,
 				4E2B88F624CB07930043858B /* ContentView.swift */,
@@ -161,6 +164,7 @@
 				4E2B88F524CB07930043858B /* SceneDelegate.swift in Sources */,
 				4E2B88F724CB07930043858B /* ContentView.swift in Sources */,
 				4E81139824CB906F002068A1 /* SwitchViewStateEnum.swift in Sources */,
+				4E7348F724CD851F006AE519 /* authenticateUnlock.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
