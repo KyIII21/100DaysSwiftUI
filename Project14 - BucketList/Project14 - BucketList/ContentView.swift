@@ -37,6 +37,7 @@ struct ContentView: View {
                         newLocation.coordinate = self.centerCoordinate
                         newLocation.title = "Example location"
                         self.locations.append(newLocation)
+                        self.selectedPlace = newLocation
                         self.showingEditScreen = true
                     }) {
                         Image(systemName: "plus")
