@@ -68,6 +68,7 @@ struct MissionView: View {
                                     .frame(width: 90, height: 70)
                                     .clipShape(Circle())
                                     .overlay(Circle().stroke(Color.primary, lineWidth: 1))
+                                    .accessibility(label: Text("Photo \(crewMember.astronaut.name)"))
 
                                 VStack(alignment: .leading) {
                                     Text(crewMember.astronaut.name)

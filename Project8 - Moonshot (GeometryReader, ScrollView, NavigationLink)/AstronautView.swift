@@ -33,6 +33,7 @@ struct AstronautView: View {
                         .scaledToFit()
                         .frame(width: geometry.size.width * 0.9)
                         .border(/*@START_MENU_TOKEN@*/Color.black/*@END_MENU_TOKEN@*/, width: /*@START_MENU_TOKEN@*/2/*@END_MENU_TOKEN@*/)
+                        .accessibility(label: Text("Photo \(self.astronaut.name)"))
 
                     Text(self.astronaut.description)
                         .padding()
