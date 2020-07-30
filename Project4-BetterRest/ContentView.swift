@@ -8,6 +8,18 @@
 
 import SwiftUI
 
+extension Double {
+  func inTime() -> String {
+    let wholeNumber = Int(self)
+    let afterPoint = self - Double(wholeNumber)
+    if afterPoint == 0 {
+        return String(wholeNumber) + " hours"
+    }
+    let minute = Int(afterPoint * 60)
+    return String(wholeNumber) + " hours and " + String(minute) + " minuts"
+  }
+}
+
 struct ContentView: View {
     
     static var defaultWakeTime: Date {
@@ -17,7 +29,7 @@ struct ContentView: View {
         return Calendar.current.date(from: components) ?? Date()
     }
     @State private var wakeUp = defaultWakeTime
-    @State private var sleepAmount = 8.0
+    @State private var sleepAmount: Double = 8.0
     @State private var coffeeAmount = 1
     func youNeedSleep() -> String {
         let model = SleepCalculator()
@@ -52,6 +64,7 @@ struct ContentView: View {
                     Stepper(value: $sleepAmount, in: 4...12, step: 0.25) {
                         Text("\(sleepAmount, specifier: "%g") hours")
                     }
+                    .accessibility(value: Text("\(sleepAmount.inTime())"))
                 }
                 
                 Section(header: Text("Daily coffee intake")){
