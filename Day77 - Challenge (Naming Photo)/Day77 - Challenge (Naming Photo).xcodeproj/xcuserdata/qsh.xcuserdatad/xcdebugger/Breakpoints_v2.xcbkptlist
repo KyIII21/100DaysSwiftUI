@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Bucket
+   uuid = "2019C307-D61D-4C09-B49E-D1DD2463FB14"
+   type = "1"
+   version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "7C17EBCC-5B4F-4792-B502-743494A429C7"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Day77 - Challenge (Naming Photo)/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "94"
+            endingLineNumber = "94"
+            landmarkName = "saveImage()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "7C17EBCC-5B4F-4792-B502-743494A429C7 - cfcbbd30b6e051cb"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Day77___Challenge__Naming_Photo_.ContentView.saveImage() -&gt; ()"
+                  moduleName = "Day77 - Challenge (Naming Photo)"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qsh/Documents/XCode/Projects/100DaysSwiftUI/Day77%20-%20Challenge%20(Naming%20Photo)/Day77%20-%20Challenge%20(Naming%20Photo)/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "410">
+               </Location>
+               <Location
+                  uuid = "7C17EBCC-5B4F-4792-B502-743494A429C7 - 9ed98a5a3bc33137"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 () -&gt; () in Day77___Challenge__Naming_Photo_.ContentView.saveImage() -&gt; ()"
+                  moduleName = "Day77 - Challenge (Naming Photo)"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/qsh/Documents/XCode/Projects/100DaysSwiftUI/Day77%20-%20Challenge%20(Naming%20Photo)/Day77%20-%20Challenge%20(Naming%20Photo)/ContentView.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "94"
+                  endingLineNumber = "94"
+                  offsetFromSymbolStart = "8">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1CFD3391-268B-4090-8A76-6F039E6B59DA"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Day77 - Challenge (Naming Photo)/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "83"
+            endingLineNumber = "83"
+            landmarkName = "checktoSaveImage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "58E93FC9-6F21-4388-82E5-91025090E279"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Day77 - Challenge (Naming Photo)/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "74"
+            endingLineNumber = "74"
+            landmarkName = "showNaming()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "D5DCCA94-5BFF-4DD3-8843-96C2FFCA6101"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Day77 - Challenge (Naming Photo)/ContentView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "73"
+            endingLineNumber = "73"
+            landmarkName = "showNaming()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
+</Bucket>
