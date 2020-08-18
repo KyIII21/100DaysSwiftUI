@@ -7,22 +7,25 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct PhotoName: Codable{
     var name: String
     var url: String
+    var latitude: Double
+    var longitude: Double
 }
 struct PhNames: Codable{
     var items: [PhotoName]{
         didSet {
            let encoder = JSONEncoder()
            if let encoded = try? encoder.encode(items) {
-               UserDefaults.standard.set(encoded, forKey: "Items")
+               UserDefaults.standard.set(encoded, forKey: "NewItems")
            }
        }
     }
     init() {
-        if let items = UserDefaults.standard.data(forKey: "Items"){
+        if let items = UserDefaults.standard.data(forKey: "NewItems"){
             let decoder = JSONDecoder()
             if let decodeItem = try? decoder.decode([PhotoName].self, from: items){
                 self.items = decodeItem
@@ -41,13 +44,28 @@ struct ContentView: View {
     let context = CIContext()
     @State private var namePhoto = ""
     
+    let locationFetcher = LocationFetcher()
+    @State private var location = CLLocationCoordinate2D()
+    
+    @State private var showingAlertLocation = false
+    
     var addButton: some View{
-        Button(action:{self.showingImagePicker.toggle()}){
+        Button(action: showPicker){
             Text("Add Photo")
-                .sheet(isPresented: $showingImagePicker, onDismiss: showNaming) {
-                    ImagePicker(image: self.$inputImage)
-                }
-                
+        }
+        .sheet(isPresented: $showingImagePicker, onDismiss: showNaming) {
+            ImagePicker(image: self.$inputImage)
+        }
+    }
+    
+    func getLocation(){
+        self.locationFetcher.start()
+        if let location = self.locationFetcher.lastKnownLocation {
+            self.location = location
+            print("Your location is \(location)")
+        } else {
+            self.showingAlertLocation.toggle()
+            print("Your location is unknown")
         }
     }
     
@@ -55,6 +73,10 @@ struct ContentView: View {
         if self.inputImage != nil{
             self.showingImageNaming.toggle()
         }
+    }
+    
+    func showPicker(){
+        self.showingImagePicker.toggle()
     }
     
     func checktoSaveImage(){
@@ -68,21 +90,21 @@ struct ContentView: View {
             return
         }
         
-        let imageSaver = ImageSaver()
+        let fileManager = FileImageManager()
 
-        imageSaver.successHandler = {
+        fileManager.successHandler = {
             print("Success!")
         }
 
-        imageSaver.errorHandler = {
+        fileManager.errorHandler = {
             print("Oops: \($0.localizedDescription)")
         }
         
         let urlId = UUID().description
 
-        imageSaver.writeToDevice(image: processedImage, photoUrl: urlId)
+        fileManager.writeToDevice(image: processedImage, photoUrl: urlId)
         
-        let photo = PhotoName(name: self.namePhoto, url: urlId)
+        let photo = PhotoName(name: self.namePhoto, url: urlId, latitude: location.latitude, longitude: location.longitude)
         
         myPhotoNames.items.append(photo)
         
@@ -93,7 +115,7 @@ struct ContentView: View {
     func removeItems(at offsets: IndexSet) {
         for offset in offsets{
             let url = myPhotoNames.items[offset].url
-            ImageSaver().deleteFile(url: url)
+            FileImageManager().deleteFile(url: url)
         }
         
         myPhotoNames.items.remove(atOffsets: offsets)
@@ -104,9 +126,9 @@ struct ContentView: View {
         NavigationView{
             List{
                 ForEach(myPhotoNames.items, id: \.name){ photo in
-                    NavigationLink(destination: PhotoDescription(photo: photo, image: ImageSaver().loadImage(url: photo.url))){
+                    NavigationLink(destination: PhotoDescription(photo: photo)){
                         HStack{
-                            ImageSaver().loadImage(url: photo.url)?
+                            FileImageManager().loadImage(url: photo.url)?
                                 .resizable()
                                 .aspectRatio(contentMode: .fill)
                                 .frame(width: 90, height: 70)
@@ -114,13 +136,17 @@ struct ContentView: View {
                                 .overlay(Circle().stroke(Color.primary, lineWidth: 1))
                             Text(photo.name)
                         }
-                        .sheet(isPresented: self.$showingImageNaming, onDismiss: self.checktoSaveImage) {
-                            NamingView(name: self.$namePhoto, image: self.inputImage!)
-                        }
                     }
                     
                 }
                 .onDelete(perform: removeItems)
+            }
+            .onAppear(perform: self.getLocation)
+            .alert(isPresented: self.$showingAlertLocation){
+                Alert(title: Text("Serch Your Location is Error"), message: Text("We can try get your location."), primaryButton: .default(Text("Try"), action: self.getLocation), secondaryButton: .default(Text("Not Need")))
+            }
+            .sheet(isPresented: self.$showingImageNaming, onDismiss: self.checktoSaveImage) {
+                    NamingView(name: self.$namePhoto, image: self.inputImage!)
             }
             .navigationBarTitle("Call the Photo")
             .navigationBarItems(trailing: addButton)
@@ -129,8 +155,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
-}
+//struct ContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        ContentView()
+//    }
+//}

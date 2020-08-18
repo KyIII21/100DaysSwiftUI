@@ -11,7 +11,7 @@ import Foundation
 import UIKit
 import SwiftUI
 
-class ImageSaver: NSObject {
+class FileImageManager: NSObject {
     var successHandler: (() -> Void)?
     var errorHandler: ((Error) -> Void)?
     

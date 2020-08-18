@@ -7,18 +7,19 @@
 //
 
 import SwiftUI
+import CoreLocation
 
 struct PhotoDescription: View {
     let photo: PhotoName
-    let image: Image?
     var body: some View {
         VStack{
             Text(photo.name)
             Text(photo.url)
-            image?
+            FileImageManager().loadImage(url: photo.url)?
                 .resizable()
                 .scaledToFit()
                 .frame(width: 300, height: 400, alignment: .top)
+            MapView(location: CLLocationCoordinate2D(latitude: photo.latitude, longitude: photo.longitude))
                 
         }
         

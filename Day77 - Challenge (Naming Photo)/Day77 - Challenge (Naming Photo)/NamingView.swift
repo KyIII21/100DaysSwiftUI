@@ -26,6 +26,7 @@ struct NamingView: View {
             }
         .disabled(self.name == "")
         }
+        .padding()
     }
 }
 
