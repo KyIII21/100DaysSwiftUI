@@ -18,6 +18,7 @@
 		4E97267E24EC58810007328D /* ResultTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E97267D24EC58810007328D /* ResultTypeView.swift */; };
 		4E97268024EC63760007328D /* ObjectWillChangeAndAsyncAfterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E97267F24EC63760007328D /* ObjectWillChangeAndAsyncAfterView.swift */; };
 		4EECC90D24ED467A00C3CA02 /* ImageInterpolationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC90C24ED467A00C3CA02 /* ImageInterpolationView.swift */; };
+		4EECC91124ED487500C3CA02 /* ContextMenusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC91024ED487500C3CA02 /* ContextMenusView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		4E97267D24EC58810007328D /* ResultTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ResultTypeView.swift; path = Learning/ResultTypeView.swift; sourceTree = "<group>"; };
 		4E97267F24EC63760007328D /* ObjectWillChangeAndAsyncAfterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ObjectWillChangeAndAsyncAfterView.swift; path = Learning/ObjectWillChangeAndAsyncAfterView.swift; sourceTree = "<group>"; };
 		4EECC90C24ED467A00C3CA02 /* ImageInterpolationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ImageInterpolationView.swift; path = Learning/ImageInterpolationView.swift; sourceTree = "<group>"; };
+		4EECC91024ED487500C3CA02 /* ContextMenusView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContextMenusView.swift; path = Learning/ContextMenusView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 		4E97266424EC41240007328D /* Project16 - HotProspect */ = {
 			isa = PBXGroup;
 			children = (
+				4EECC91024ED487500C3CA02 /* ContextMenusView.swift */,
 				4E97267924EC50D70007328D /* EnvironmentObjectView.swift */,
 				4E97267B24EC52720007328D /* TabsView.swift */,
 				4E97267D24EC58810007328D /* ResultTypeView.swift */,
@@ -161,6 +164,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4EECC91124ED487500C3CA02 /* ContextMenusView.swift in Sources */,
 				4E97268024EC63760007328D /* ObjectWillChangeAndAsyncAfterView.swift in Sources */,
 				4E97266624EC41240007328D /* AppDelegate.swift in Sources */,
 				4E97267A24EC50D70007328D /* EnvironmentObjectView.swift in Sources */,
