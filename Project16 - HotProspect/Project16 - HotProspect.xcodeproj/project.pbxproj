@@ -24,6 +24,7 @@
 		4EECC91824ED99A600C3CA02 /* AddSwiftPackageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC91724ED99A600C3CA02 /* AddSwiftPackageView.swift */; };
 		4EECC91A24EEC73900C3CA02 /* ProspectsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC91924EEC73900C3CA02 /* ProspectsView.swift */; };
 		4EECC91C24EEC78000C3CA02 /* MeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC91B24EEC78000C3CA02 /* MeView.swift */; };
+		4EECC91E24EEC99A00C3CA02 /* Prospect.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC91D24EEC99A00C3CA02 /* Prospect.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +46,7 @@
 		4EECC91724ED99A600C3CA02 /* AddSwiftPackageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddSwiftPackageView.swift; path = Learning/AddSwiftPackageView.swift; sourceTree = "<group>"; };
 		4EECC91924EEC73900C3CA02 /* ProspectsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProspectsView.swift; sourceTree = "<group>"; };
 		4EECC91B24EEC78000C3CA02 /* MeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeView.swift; sourceTree = "<group>"; };
+		4EECC91D24EEC99A00C3CA02 /* Prospect.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Prospect.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				4E97266524EC41240007328D /* AppDelegate.swift */,
 				4E97266724EC41240007328D /* SceneDelegate.swift */,
 				4E97266924EC41240007328D /* ContentView.swift */,
+				4EECC91D24EEC99A00C3CA02 /* Prospect.swift */,
 				4EECC91724ED99A600C3CA02 /* AddSwiftPackageView.swift */,
 				4EECC91924EEC73900C3CA02 /* ProspectsView.swift */,
 				4EECC91B24EEC78000C3CA02 /* MeView.swift */,
@@ -187,6 +190,7 @@
 				4EECC91A24EEC73900C3CA02 /* ProspectsView.swift in Sources */,
 				4EECC91124ED487500C3CA02 /* ContextMenusView.swift in Sources */,
 				4E97268024EC63760007328D /* ObjectWillChangeAndAsyncAfterView.swift in Sources */,
+				4EECC91E24EEC99A00C3CA02 /* Prospect.swift in Sources */,
 				4E97266624EC41240007328D /* AppDelegate.swift in Sources */,
 				4E97267A24EC50D70007328D /* EnvironmentObjectView.swift in Sources */,
 				4E97267E24EC58810007328D /* ResultTypeView.swift in Sources */,
