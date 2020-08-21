@@ -14,9 +14,19 @@ enum FilterType {
     case none, contacted, uncontacted
 }
 
+enum SortType {
+    case byName, byRecent
+}
+
 struct ProspectsView: View {
     @EnvironmentObject var prospects: Prospects
     let filter: FilterType
+    @State private var isShowingScanner = false
+    @State private var showingSortSheet = false
+    //@State private var sortType = SortType.byRecent
+    @State private var sortsType: [FilterType : SortType] = [.none : .byRecent, .contacted : .byRecent, .uncontacted : .byRecent]
+    
+    
     var title: String {
         switch filter {
         case .none:
@@ -30,15 +40,22 @@ struct ProspectsView: View {
     var filteredProspects: [Prospect] {
         switch filter {
         case .none:
-            return prospects.people
+            return prospects.people.sorted(by: sorting)
         case .contacted:
-            return prospects.people.filter { $0.isContacted }
+            return prospects.people.filter { $0.isContacted }.sorted(by: sorting)
         case .uncontacted:
-            return prospects.people.filter { !$0.isContacted }
+            return prospects.people.filter { !$0.isContacted }.sorted(by: sorting)
         }
     }
     
-    @State private var isShowingScanner = false
+    func sorting(left: Prospect, right: Prospect) -> Bool{
+        switch sortsType[filter] {
+        case .byName:
+            return left.name < right.name
+        default:
+            return false
+        }
+    }
     
     func handleScan(result: Result<String, CodeScannerView.ScanError>) {
        self.isShowingScanner = false
@@ -96,11 +113,17 @@ struct ProspectsView: View {
         NavigationView {
             List {
                 ForEach(filteredProspects) { prospect in
-                    VStack(alignment: .leading) {
-                        Text(prospect.name)
-                            .font(.headline)
-                        Text(prospect.emailAddress)
-                            .foregroundColor(.secondary)
+                    HStack{
+                        VStack(alignment: .leading) {
+                            Text(prospect.name)
+                                .font(.headline)
+                            Text(prospect.emailAddress)
+                                .foregroundColor(.secondary)
+                        }
+                        if self.filter == .none && prospect.isContacted {
+                            Spacer()
+                            Image(systemName: "checkmark.circle")
+                        }
                     }
                     .contextMenu {
                         Button(prospect.isContacted ? "Mark Uncontacted" : "Mark Contacted" ) {
@@ -114,16 +137,23 @@ struct ProspectsView: View {
                     }
                 }
             }
-                .navigationBarTitle(title)
-                .navigationBarItems(trailing: Button(action: {
-                    self.isShowingScanner = true
-                }) {
-                    Image(systemName: "qrcode.viewfinder")
-                    Text("Scan")
-                })
-                .sheet(isPresented: $isShowingScanner) {
-                    CodeScannerView(codeTypes: [.qr], simulatedData: "Paul Hudson\npaul@hackingwithswift.com", completion: self.handleScan)
-                }
+            .navigationBarTitle(title)
+            .navigationBarItems(leading: Button(action: {self.showingSortSheet.toggle()}){
+                Image(systemName: "line.horizontal.3.decrease.circle")
+                Text("Sort")
+            }, trailing: Button(action: {
+                self.isShowingScanner = true
+            }) {
+                Image(systemName: "qrcode.viewfinder")
+                Text("Scan")
+            })
+            .sheet(isPresented: $isShowingScanner) {
+                
+                CodeScannerView(codeTypes: [.qr], simulatedData: "Archi Cuson\nql@hackingwithswift.com", completion: self.handleScan)
+            }
+            .actionSheet(isPresented: $showingSortSheet) {
+                ActionSheet(title: Text("Sorting.."), message: Text("Only for this Tab."), buttons: [.default(Text( self.sortsType[filter] == .byName ? "✔︎ By Name" : "By Name")){self.sortsType[self.filter] = .byName}, .default(Text(self.sortsType[filter] == .byRecent ? "✔︎ By Most Recent" : "By Most Recent")){self.sortsType[self.filter] = .byRecent}])
+            }
         }
     }
 }
