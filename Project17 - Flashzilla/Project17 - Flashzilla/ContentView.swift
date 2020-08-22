@@ -20,6 +20,11 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
+            Image("background")
+            .resizable()
+            .scaledToFill()
+            .edgesIgnoringSafeArea(.all)
+            
             VStack {
                 ZStack {
                     ForEach(0..<cards.count, id: \.self) { index in
