@@ -13,9 +13,12 @@ struct CardView: View {
     @State private var isShowingAnswer = false
     @State private var offset = CGSize.zero
     
-    var removal: (() -> Void)? = nil
-    
     @State private var feedback = UINotificationFeedbackGenerator()
+    
+    @Environment(\.accessibilityEnabled) var accessibilityEnabled
+    @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
+    
+    var removal: (() -> Void)? = nil
 
     var body: some View {
         ZStack {
@@ -31,14 +34,20 @@ struct CardView: View {
                 .shadow(radius: 10)
 
             VStack {
-                Text(card.prompt)
-                    .font(.largeTitle)
-                    .foregroundColor(.black)
+                if differentiateWithoutColor || accessibilityEnabled {
+                    Text(isShowingAnswer ? card.answer : card.prompt)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
+                } else {
+                    Text(card.prompt)
+                        .font(.largeTitle)
+                        .foregroundColor(.black)
 
-                if isShowingAnswer {
-                    Text(card.answer)
-                        .font(.title)
-                        .foregroundColor(.gray)
+                    if isShowingAnswer {
+                        Text(card.answer)
+                            .font(.title)
+                            .foregroundColor(.gray)
+                    }
                 }
             }
             .padding(20)
@@ -48,9 +57,11 @@ struct CardView: View {
         .rotationEffect(.degrees(Double(offset.width / 10)))
         .offset(x: offset.width * 2, y: 0)
         .opacity(2 - Double(abs(offset.width / 75)))
+        .accessibility(addTraits: .isButton)
         .onTapGesture {
             self.isShowingAnswer.toggle()
         }
+        .animation(.spring())
         .gesture(
             DragGesture()
                 .onChanged { offset in

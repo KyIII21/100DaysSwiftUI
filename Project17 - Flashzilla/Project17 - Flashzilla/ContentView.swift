@@ -24,6 +24,7 @@ struct ContentView: View {
     @State private var isActive = true
     
     func removeCard(at index: Int) {
+        guard index >= 0 else { return }
         cards.remove(at: index)
         if cards.isEmpty {
             isActive = false
@@ -38,7 +39,7 @@ struct ContentView: View {
     
     var body: some View {
         ZStack {
-            Image("background")
+            Image(decorative: "background")
             .resizable()
             .scaledToFill()
             .edgesIgnoringSafeArea(.all)
@@ -63,9 +64,40 @@ struct ContentView: View {
                            }
                         }
                         .stacked(at: index, in: self.cards.count)
+                        .allowsHitTesting(index == self.cards.count - 1)
+                        .accessibility(hidden: index < self.cards.count - 1)
                     }
                 }
                 .allowsHitTesting(timeRemaining > 0)
+                
+                HStack {
+                    Button(action: {
+                        withAnimation {
+                            self.removeCard(at: self.cards.count - 1)
+                        }
+                    }) {
+                        Image(systemName: "xmark.circle")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                    .accessibility(label: Text("Wrong"))
+                    .accessibility(hint: Text("Mark your answer as being incorrect."))
+                    Spacer()
+
+                    Button(action: {
+                        withAnimation {
+                            self.removeCard(at: self.cards.count - 1)
+                        }
+                    }) {
+                        Image(systemName: "checkmark.circle")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                    .accessibility(label: Text("Correct"))
+                    .accessibility(hint: Text("Mark your answer as being correct."))
+                }
                 
                 if cards.isEmpty {
                     Button("Start Again", action: resetCards)
