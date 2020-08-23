@@ -21,6 +21,7 @@
 		4EECC94D24F195A300C3CA02 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC94C24F195A300C3CA02 /* Card.swift */; };
 		4EECC94F24F1994C00C3CA02 /* CardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC94E24F1994C00C3CA02 /* CardView.swift */; };
 		4EECC95124F19A1E00C3CA02 /* DifferentAccesibilityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC95024F19A1E00C3CA02 /* DifferentAccesibilityView.swift */; };
+		4EECC95324F2FD3A00C3CA02 /* EditCards.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EECC95224F2FD3A00C3CA02 /* EditCards.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		4EECC94C24F195A300C3CA02 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		4EECC94E24F1994C00C3CA02 /* CardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardView.swift; sourceTree = "<group>"; };
 		4EECC95024F19A1E00C3CA02 /* DifferentAccesibilityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DifferentAccesibilityView.swift; path = Learning/DifferentAccesibilityView.swift; sourceTree = "<group>"; };
+		4EECC95224F2FD3A00C3CA02 /* EditCards.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditCards.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +82,7 @@
 				4EECC92E24F017D900C3CA02 /* AppDelegate.swift */,
 				4EECC93024F017D900C3CA02 /* SceneDelegate.swift */,
 				4EECC93224F017D900C3CA02 /* ContentView.swift */,
+				4EECC95224F2FD3A00C3CA02 /* EditCards.swift */,
 				4EECC95024F19A1E00C3CA02 /* DifferentAccesibilityView.swift */,
 				4EECC94C24F195A300C3CA02 /* Card.swift */,
 				4EECC94E24F1994C00C3CA02 /* CardView.swift */,
@@ -179,6 +182,7 @@
 				4EECC94324F0334E00C3CA02 /* UseGesturesVIew.swift in Sources */,
 				4EECC93324F017D900C3CA02 /* ContentView.swift in Sources */,
 				4EECC94524F0410900C3CA02 /* VibrationsView.swift in Sources */,
+				4EECC95324F2FD3A00C3CA02 /* EditCards.swift in Sources */,
 				4EECC94B24F16A0400C3CA02 /* NotificationsView.swift in Sources */,
 				4EECC95124F19A1E00C3CA02 /* DifferentAccesibilityView.swift in Sources */,
 			);

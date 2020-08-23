@@ -16,12 +16,14 @@ extension View {
 }
 
 struct ContentView: View {
-    @State private var cards = [Card](repeating: Card.example, count: 10)
+    @State private var cards = [Card]()
     
     @State private var timeRemaining = 100
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State private var isActive = true
+    
+    @State private var showingEditScreen = false
     
     func removeCard(at index: Int) {
         guard index >= 0 else { return }
@@ -32,9 +34,17 @@ struct ContentView: View {
     }
     
     func resetCards() {
-        cards = [Card](repeating: Card.example, count: 10)
         timeRemaining = 100
         isActive = true
+        loadData()
+    }
+    
+    func loadData() {
+        if let data = UserDefaults.standard.data(forKey: "Cards") {
+            if let decoded = try? JSONDecoder().decode([Card].self, from: data) {
+                self.cards = decoded
+            }
+        }
     }
     
     var body: some View {
@@ -43,6 +53,26 @@ struct ContentView: View {
             .resizable()
             .scaledToFill()
             .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                HStack {
+                    Spacer()
+
+                    Button(action: {
+                        self.showingEditScreen = true
+                    }) {
+                        Image(systemName: "plus.circle")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                }
+
+                Spacer()
+            }
+            .foregroundColor(.white)
+            .font(.largeTitle)
+            .padding()
             
             VStack {
                 Text("Time: \(timeRemaining)")
@@ -67,37 +97,37 @@ struct ContentView: View {
                         .allowsHitTesting(index == self.cards.count - 1)
                         .accessibility(hidden: index < self.cards.count - 1)
                     }
+                    
+                    HStack {
+                        Button(action: {
+                            withAnimation {
+                                self.removeCard(at: self.cards.count - 1)
+                            }
+                        }) {
+                            Image(systemName: "xmark.circle")
+                                .padding()
+                                .background(Color.black.opacity(0.7))
+                                .clipShape(Circle())
+                        }
+                        .accessibility(label: Text("Wrong"))
+                        .accessibility(hint: Text("Mark your answer as being incorrect."))
+                        Spacer()
+
+                        Button(action: {
+                            withAnimation {
+                                self.removeCard(at: self.cards.count - 1)
+                            }
+                        }) {
+                            Image(systemName: "checkmark.circle")
+                                .padding()
+                                .background(Color.black.opacity(0.7))
+                                .clipShape(Circle())
+                        }
+                        .accessibility(label: Text("Correct"))
+                        .accessibility(hint: Text("Mark your answer as being correct."))
+                    }
                 }
                 .allowsHitTesting(timeRemaining > 0)
-                
-                HStack {
-                    Button(action: {
-                        withAnimation {
-                            self.removeCard(at: self.cards.count - 1)
-                        }
-                    }) {
-                        Image(systemName: "xmark.circle")
-                            .padding()
-                            .background(Color.black.opacity(0.7))
-                            .clipShape(Circle())
-                    }
-                    .accessibility(label: Text("Wrong"))
-                    .accessibility(hint: Text("Mark your answer as being incorrect."))
-                    Spacer()
-
-                    Button(action: {
-                        withAnimation {
-                            self.removeCard(at: self.cards.count - 1)
-                        }
-                    }) {
-                        Image(systemName: "checkmark.circle")
-                            .padding()
-                            .background(Color.black.opacity(0.7))
-                            .clipShape(Circle())
-                    }
-                    .accessibility(label: Text("Correct"))
-                    .accessibility(hint: Text("Mark your answer as being correct."))
-                }
                 
                 if cards.isEmpty {
                     Button("Start Again", action: resetCards)
@@ -122,6 +152,10 @@ struct ContentView: View {
                 self.isActive = true
             }
         }
+        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
+            EditCards()
+        }
+        .onAppear(perform: resetCards)
     }
 }
 
