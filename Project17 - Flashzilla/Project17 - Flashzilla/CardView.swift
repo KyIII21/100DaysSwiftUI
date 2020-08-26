@@ -18,7 +18,18 @@ struct CardView: View {
     @Environment(\.accessibilityEnabled) var accessibilityEnabled
     @Environment(\.accessibilityDifferentiateWithoutColor) var differentiateWithoutColor
     
-    var removal: (() -> Void)? = nil
+    var removal: ((Bool) -> Void)? = nil
+    //var addInBack: (() -> Void)? = nil
+    
+    func cardFillColor(width: CGFloat) -> Color{
+        if width > 0 {
+            return .green
+        }
+        if width < 0 {
+            return .red
+        }
+        return .white
+    }
 
     var body: some View {
         ZStack {
@@ -29,7 +40,7 @@ struct CardView: View {
                 )
                 .background(
                     RoundedRectangle(cornerRadius: 25, style: .continuous)
-                        .fill(offset.width > 0 ? Color.green : Color.red)
+                        .fill(self.cardFillColor(width: offset.width))
                 )
                 .shadow(radius: 10)
 
@@ -72,11 +83,11 @@ struct CardView: View {
                     if abs(self.offset.width) > 100 {
                         if self.offset.width > 0 {
                             self.feedback.notificationOccurred(.success)
+                            self.removal?(false)
                         } else {
                             self.feedback.notificationOccurred(.error)
+                            self.removal?(true)
                         }
-
-                        self.removal?()
                     } else {
                         self.offset = .zero
                     }
@@ -85,8 +96,8 @@ struct CardView: View {
     }
 }
 
-struct CardView_Previews: PreviewProvider {
-    static var previews: some View {
-        CardView(card: Card.example)
-    }
-}
+//struct CardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        CardView(card: Card.example)
+//    }
+//}

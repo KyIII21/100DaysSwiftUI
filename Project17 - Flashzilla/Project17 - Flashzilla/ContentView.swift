@@ -24,9 +24,27 @@ struct ContentView: View {
     @State private var isActive = true
     
     @State private var showingEditScreen = false
+    @State private var showingSetting = false
+    @State private var returnErrorCard = false
+    @State private var settingOrEdit = false
     
-    func removeCard(at index: Int) {
+//    func removeCard(at index: Int) {
+//        guard index >= 0 else { return }
+//
+//        cards.remove(at: index)
+//        if cards.isEmpty {
+//            isActive = false
+//    }
+    
+    func removeCard(at index: Int, errorCard: Bool) {
         guard index >= 0 else { return }
+        if returnErrorCard && errorCard {
+            let returnCard = cards[index]
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.cards.insert(returnCard, at: 0)
+            }
+        }
+        
         cards.remove(at: index)
         if cards.isEmpty {
             isActive = false
@@ -56,9 +74,20 @@ struct ContentView: View {
             
             VStack {
                 HStack {
+                    Button(action: {
+                        self.settingOrEdit = true
+                        self.showingSetting = true
+                    }) {
+                        Image(systemName: "gear")
+                            .padding()
+                            .background(Color.black.opacity(0.7))
+                            .clipShape(Circle())
+                    }
+                        
                     Spacer()
 
                     Button(action: {
+                        self.settingOrEdit = false
                         self.showingEditScreen = true
                     }) {
                         Image(systemName: "plus.circle")
@@ -86,22 +115,41 @@ struct ContentView: View {
                         .opacity(0.75)
                 )
                 
+                if self.timeRemaining == 0{
+                    VStack{
+                        Text("You didn't have time!")
+                            .foregroundColor(.red)
+                            .font(.title)
+                        Text("Answer: \(self.cards.last?.answer ?? "Not Found Answer!")")
+                            .font(.title)
+                    }
+                    .padding()
+                    .background(
+                        Capsule()
+                            .fill(Color.white)
+                            .opacity(0.85)
+                    )
+                    .padding(.top)
+                }
+                
                 ZStack {
-                    ForEach(0..<cards.count, id: \.self) { index in
-                        CardView(card: self.cards[index]) {
-                           withAnimation {
-                               self.removeCard(at: index)
-                           }
+                    if self.timeRemaining != 0{
+                        ForEach(0..<cards.count, id: \.self) { index in
+                            CardView(card: self.cards[index]){ errorCard in
+                               withAnimation {
+                                self.removeCard(at: index, errorCard: errorCard)
+                               }
+                            }
+                            .stacked(at: index, in: self.cards.count)
+                            .allowsHitTesting(index == self.cards.count - 1)
+                            .accessibility(hidden: index < self.cards.count - 1)
                         }
-                        .stacked(at: index, in: self.cards.count)
-                        .allowsHitTesting(index == self.cards.count - 1)
-                        .accessibility(hidden: index < self.cards.count - 1)
                     }
                     
                     HStack {
                         Button(action: {
                             withAnimation {
-                                self.removeCard(at: self.cards.count - 1)
+                                self.removeCard(at: self.cards.count - 1, errorCard: true)
                             }
                         }) {
                             Image(systemName: "xmark.circle")
@@ -115,7 +163,7 @@ struct ContentView: View {
 
                         Button(action: {
                             withAnimation {
-                                self.removeCard(at: self.cards.count - 1)
+                                self.removeCard(at: self.cards.count - 1, errorCard: false)
                             }
                         }) {
                             Image(systemName: "checkmark.circle")
@@ -129,7 +177,7 @@ struct ContentView: View {
                 }
                 .allowsHitTesting(timeRemaining > 0)
                 
-                if cards.isEmpty {
+                if cards.isEmpty || self.timeRemaining == 0 {
                     Button("Start Again", action: resetCards)
                         .padding()
                         .background(Color.white)
@@ -152,8 +200,12 @@ struct ContentView: View {
                 self.isActive = true
             }
         }
-        .sheet(isPresented: $showingEditScreen, onDismiss: resetCards) {
-            EditCards()
+        .sheet(isPresented: settingOrEdit ? $showingSetting : $showingEditScreen, onDismiss: resetCards) {
+            if self.settingOrEdit {
+                SettingView(returnCard: self.$returnErrorCard)
+            } else {
+                EditCards()
+            }
         }
         .onAppear(perform: resetCards)
     }
