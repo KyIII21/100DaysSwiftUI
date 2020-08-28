@@ -36,12 +36,12 @@ struct ContentView: View {
             wordError(title: "Word not recognized", message: "You can't just make them up, you know!")
             return
         }
-        
+
         guard isSimpleorShort(word: answer) else {
             wordError(title: "Word not possible", message: "That is shorter than 3 words or very simple")
             return
         }
-        
+
         guard isReal(word: answer) else {
             wordError(title: "Word not possible", message: "That isn't a real word.")
             return
@@ -123,13 +123,25 @@ struct ContentView: View {
                         .padding()
                         .autocapitalization(.none)
 
-                    List(usedWords, id: \.self) { word in
-                        HStack{
-                            Image(systemName: "\(word.count).circle")
-                            Text(word)
+                    GeometryReader { fullView in
+                        List(self.usedWords, id: \.self) { word in
+                            GeometryReader { geometry in
+                                HStack{
+                                    Image(systemName: "\(word.count).circle")
+                                    Text(word)
+                                }
+                                .frame(width: geometry.size.width, alignment: .leading)
+                                .accessibilityElement(children: .ignore)
+                                .accessibility(label: Text("\(word), \(word.count) letters"))
+                                .offset(x: self.usedWords.firstIndex(of: word)! > 2 ? (CGFloat(self.usedWords.firstIndex(of: word)!) - 2) * 20 : 0, y: 0)
+                                .padding(.horizontal)
+                                //.alignmentGuide(.leading) { _ in CGFloat(self.usedWords.firstIndex(of: word)!) * -10 }
+                                .foregroundColor(Color(
+                                    red: Double(geometry.frame(in: .global).minY / fullView.size.height),
+                                    green: 0.5,
+                                    blue: 0.3))
+                            }
                         }
-                        .accessibilityElement(children: .ignore)
-                        .accessibility(label: Text("\(word), \(word.count) letters"))
                     }
                 
                     HStack{
